@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fantasy Padel</title>
-</head>
-<body>
-    <p>¡Bienvenido a Fantasy Padel!</p>
-</body>
-</html>
+<?php
+
+session_start();
+
+// Punto de partida de la App (IMPORTANTE incluir Configuracion.php que incluye las variables de configuración utilzadas en la App)
+// Manejamos las diferentes rutas de acceso a la App
+// Accedemos al Controlador.php-->cargarControlador para manejar las vistas a mostrar a partir de los parámetros CONTROLADOR y ACCIÓN recibidos por GET
+
+?>
