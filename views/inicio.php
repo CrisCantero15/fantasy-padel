@@ -6,18 +6,7 @@
     <title>Fantasy Padel - Inicio</title>
 </head>
 <body>
-
-    <?php
-
-    if(!isset($_SESSION['usuario'])) {
-        header("Location: " . $rutaApp . "login/accederLogin");
-        exit();
-    }
-
-    ?>
-
     <p>¡Bienvenido a Fantasy Padel! Estoy en Inicio.</p>
     <!-- Maquetar sección de noticias y eventos (calendario) -->
-     
 </body>
 </html>

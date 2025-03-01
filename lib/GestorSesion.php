@@ -9,6 +9,20 @@ class GestorSesion {
         
     }
 
+    public function iniciarSesion() {
+        
+    }
+
+    public function comprobarSesion() {
+        
+        if (isset($_SESSION["usuario"])) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 }
 
 ?>
