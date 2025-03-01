@@ -1,16 +1,16 @@
 <?php
 
-class InicioControlador {
+class LoginControlador {
 
     public function __construct() {
 
     }
 
-    public function accederInicio() {
+    public function accederLogin() {
 
         require_once("views/Vista.php");
         $vista = new Vista();
-        $vista->renderizarVista("inicio");
+        $vista->renderizarVista("login");
 
     }
 

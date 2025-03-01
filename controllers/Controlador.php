@@ -6,52 +6,64 @@
 
 class Controlador {
 
-    private $controlador;
-    private $accion;
-
     public function cargarControlador() {
         
         // Obtenemos por GET el controlador y la acción
         // En caso de no recibir nada, cargamos el controlador por defecto (inicio)
 
-        $this->controlador = "inicio";
-        $this->accion = "";
+        $controlador = "inicio";
+        $accion = "";
 
         // Comprobamos que existe el controlador. Si existe, cargamos el controlador correspondiente. Si no existe, cargamos el inicio
 
         if (isset($_GET['controlador']) && !empty($_GET['controlador'])) {
-            $this->controlador = $_GET['controlador'];
+            $controlador = $_GET['controlador'];
         }
 
         if (isset($_GET['accion']) && !empty($_GET['accion'])) {
-            $this->accion = $_GET['accion'];
+            $accion = $_GET['accion'];
         }
 
-        if(file_exists("controllers/" . ucfirst($this->controlador) . ".php")) {
+        if (file_exists("./controllers/" . ucfirst($controlador) . "Controlador.php")) {
             
-            require_once("controllers/" . ucfirst($this->controlador) . "Controlador.php");
-            $nombreControlador = ucfirst($this->controlador) . "Controlador";
+            require_once("./controllers/" . ucfirst($controlador) . "Controlador.php");
+            $nombreControlador = ucfirst($controlador) . "Controlador";
             $instanciaControlador = new $nombreControlador();
 
-            if (method_exists($instanciaControlador, $accion)){
-                
-                $instanciaControlador->$this->accion();
-                
-            }
+            // Controlador + Accion
 
-            else {
+            if ($accion !== "") {
 
-                require_once("views/Vista.php");
+                if (method_exists($instanciaControlador, $accion)){
+                
+                    $instanciaControlador->$accion();
+                
+                // Acción no existente
+
+                } else {
+                    
+                    $data['errorValidacion'] = 'Imposible realizar la acción solicitada';
+                    require_once("./views/Vista.php");
+                    $vista = new Vista();
+                    $vista->renderizarVista("error500", $data);
+    
+                }
+            
+            // Controlador SÍ, Acción NO
+
+            } else {
+
+                require_once("./views/Vista.php");
                 $vista = new Vista();
                 $vista->renderizarVista("inicio");
-
+                
             }
 
         } else {
             
-            require_once("views/Vista.php");
+            require_once("./views/Vista.php");
             $vista = new Vista();
-            $vista->renderizarVista("inicio");
+            $vista->renderizarVista("login");
 
         }
         

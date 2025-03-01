@@ -8,21 +8,21 @@ class Vista {
         
         // Primero necesitamos saber la ruta del servidor (Enrutador)
 
-        require_once('config/Enrutador.php');
+        require_once('./config/Enrutador.php');
         $enrutador = new Enrutador();
         $rutaApp = $enrutador->getRutaServidor();
 
         // Cargamos la vista que recibe por parámetro
 
-        if (file_exists("views/" . $vista . ".php")) {
+        if (file_exists("./views/" . $vista . ".php")) {
             
-            require_once("views/" . $vista . ".php");
+            require_once("./views/" . $vista . ".php");
             
         } else {
             
             // Si la vista no existe, cargamos la vista de error
 
-            require_once("views/error404.php");
+            require_once("./views/error500.php");
         }
         
     }
