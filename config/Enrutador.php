@@ -4,10 +4,6 @@
 // Importante acceder a la clase Configuración para obtener la URL base del servidor
 
 class Enrutador {
-    
-    public function __construct() {
-        
-    }
 
     public function getRutaServidor(){
 

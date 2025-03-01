@@ -10,10 +10,6 @@ class Configuracion {
     private $rutaServidor = "http://localhost/fantasy-padel/";
     // Añadir más variables de configuración
 
-    public function __construct() {
-        
-    }
-
     public static function getInstancia() {
         if (self::$instanciaConfiguracion === null) {
             self::$instanciaConfiguracion = new Configuracion();
