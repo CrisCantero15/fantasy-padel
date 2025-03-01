@@ -6,7 +6,7 @@
     <title>Fantasy Padel - Error 500</title>
 </head>
 <body>
-    <h1>Error 500: <?php echo $data['errorValidacion'] ?></h1>
+    <h1>Error 500: Error en el servidor</h1>
     <!-- Error 500 -->
 </body>
 </html>

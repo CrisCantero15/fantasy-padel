@@ -38,32 +38,32 @@ class Controlador {
                 
                     $instanciaControlador->$accion();
                 
-                // Acción no existente
+                // Acción no existente --> Error 404 (Error de validación)
 
                 } else {
                     
                     $data['errorValidacion'] = 'Imposible realizar la acción solicitada';
                     require_once("./views/Vista.php");
                     $vista = new Vista();
-                    $vista->renderizarVista("error500", $data);
+                    $vista->renderizarVista("error404", $data);
     
                 }
             
-            // Controlador SÍ, Acción NO
+            // Al acceder a la página web por primera vez, carga InicioControlador.php desde el index.php, al no obtener parámetros GET en la ruta URL
 
             } else {
 
-                require_once("./views/Vista.php");
-                $vista = new Vista();
-                $vista->renderizarVista("inicio");
+                $instanciaControlador->accederInicio();
                 
             }
 
+        // Si el Controlador no existe, cargamos el controlador por defecto (InicioControlador)
+        
         } else {
             
-            require_once("./views/Vista.php");
-            $vista = new Vista();
-            $vista->renderizarVista("login");
+            require_once("./controllers/InicioControlador.php");
+            $instanciaControlador = new InicioControlador();
+            $instanciaControlador->accederInicio();
 
         }
         

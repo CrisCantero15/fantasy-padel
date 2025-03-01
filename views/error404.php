@@ -6,7 +6,7 @@
     <title>Fantasy Padel - Error 404</title>
 </head>
 <body>
-    <h1>Error 404</h1>
+    <h1>Error 404: <?php echo $data['errorValidacion'] ?></h1>
     <!-- Error 404 -->
 </body>
 </html>

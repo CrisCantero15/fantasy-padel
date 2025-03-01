@@ -4,7 +4,7 @@
 
 class Vista {
 
-    public function renderizarVista($vista, $datos = array()) {
+    public function renderizarVista($vista, $data = array()) {
         
         // Primero necesitamos saber la ruta del servidor (Enrutador)
 
