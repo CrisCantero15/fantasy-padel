@@ -7,6 +7,7 @@
 </head>
 <body>
     <p>¡Bienvenido a Fantasy Padel!</p>
+    <p>Estoy en REGISTRO</p>
     <!-- Maquetar sección de registro de un nuevo usuario -->
 </body>
 </html>

@@ -7,6 +7,7 @@
 </head>
 <body>
     <p>¡Bienvenido a Fantasy Padel! Estoy en Inicio.</p>
+    <p><?php echo $_SESSION["usuario"] ?></p>
     <!-- Maquetar sección de noticias y eventos (calendario) -->
 </body>
 </html>
