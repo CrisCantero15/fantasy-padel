@@ -8,7 +8,7 @@ class LoginControlador {
 
     public function accederLogin() {
 
-        require_once("views/Vista.php");
+        require_once("./views/Vista.php");
         $vista = new Vista();
         $vista->renderizarVista("login");
 
@@ -16,18 +16,17 @@ class LoginControlador {
 
     public function validarLogin() {
         
-        if (isset($_POST["usuario"]) && isset($_POST["contrasena"])) {
+        if (isset($_POST["usuario"]) && isset($_POST["contrasena"]) && !empty($_POST["usuario"]) && !empty($_POST["contrasena"])) {
 
             $usuario = $_POST["usuario"];
             $contrasena = $_POST["contrasena"];
 
-            require_once("models/LoginModelo.php");
+            require_once("./models/LoginModelo.php");
             $instanciaModelo = new LoginModelo();
             $usuarioValidado = $instanciaModelo->validarUsuario($usuario, $contrasena);
 
-            if ($usuarioValidado) {
+            if (!$usuarioValidado) { // CAMBIAR CUANDO SE HAYA HECHO LA CONEXIÓN Y VALIDACIÓN CON LA BASE DE DATOS (EN REALIDAD DEBE SER $usuarioValidado)
 
-                session_start();
                 $_SESSION["usuario"] = $usuario;
                 require_once('./config/Enrutador.php');
                 $enrutador = new Enrutador();
@@ -36,16 +35,17 @@ class LoginControlador {
 
             } else {
 
-                $data["validacionIncorrecta"] = "Usuario o contraseña incorrectos";
-                require_once("views/Vista.php");
+                $data["errorValidacion"] = "Usuario o contraseña incorrectos";
+                require_once("./views/Vista.php");
                 $vista = new Vista();
                 $vista->renderizarVista("login", $data);
 
             }
 
-        } else {
+        } else { 
 
-            require_once("views/Vista.php");
+            $data["errorValidacion"] = "Introduzca los datos correctamente";
+            require_once("./views/Vista.php");
             $vista = new Vista();
             $vista->renderizarVista("login", $data);
 

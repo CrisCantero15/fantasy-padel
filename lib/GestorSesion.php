@@ -11,6 +11,8 @@ class GestorSesion {
 
     public function iniciarSesion() {
         
+        // IMPORTANTE: tener en cuenta crear una sesión que expire cada X tiempo cuando el usuario está inactivo
+
     }
 
     public function comprobarSesion() {
@@ -20,6 +22,12 @@ class GestorSesion {
         } else {
             return false;
         }
+
+    }
+
+    public function cerrarSesion() {
+        
+        // session_destroy();
 
     }
 

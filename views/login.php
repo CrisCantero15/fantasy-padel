@@ -15,6 +15,9 @@
                 <img src="../assets/img/logo.png" alt="Logo Fantasy Padel">
             </div>
             <div>
+                <?php if (isset($data["errorValidacion"])) { ?>
+                <p class="alert alert-danger"><?php echo $data["errorValidacion"] ?></p>
+                <?php } ?>
                 <form action="<?php echo $rutaApp ?>login/validarLogin" method="POST">
                     <div>
                         <label for="usuario">Usuario: </label>
