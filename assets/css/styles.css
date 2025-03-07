@@ -1,0 +1,123 @@
+@media screen and (max-width: 768px) {
+    /* Estilar la media query para mejorar el RESPONSIVE de la imagen de portada */   
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.img-padel {
+    width: 50vw;
+    height: 100%;
+    object-fit: cover;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50vw;
+    height: 100%;
+    /* background-color: #50a8ca; */
+}
+
+.logo-container {
+    width: 100%;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.logo-container img {
+    width: 30%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: white;
+    width: 50%;
+    height: 70%;
+}
+
+.text-form {
+    margin-top: 50px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.text-form p {
+    margin-bottom: -10px;
+}
+
+.text-form a {
+    color: #2971db;
+    text-decoration: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+}
+
+form input {
+    padding: 20px 15px;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+}
+
+form input:focus {
+    outline: none;
+    border: 1px solid #2971db;
+}
+
+form button {
+    margin-top: 10px;
+    padding: 20px 15px;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    background-color: #2971db;
+    color: white;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #1e5f8a;
+}
+
+form button:active {
+    background-color: #1a4c6e;
+}
+
+.alert-text {
+    background: #e49aa4;
+    border: 1px solid red;
+    border-radius: 5px;
+    text-align: center;
+    color: red;
+    margin: 10px 0;
+}

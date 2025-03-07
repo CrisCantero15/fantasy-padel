@@ -1,43 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fantasy Padel - Login</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
 </head>
 <body>
-    <div class="row">
-        <div class="col-md-6 border-end border-2 border-primary p-3">
-            <div>
+    <main class="main-container">
+        <section class="login-container">
+            <div class="logo-container">
                 <img src="../assets/img/logo.png" alt="Logo Fantasy Padel">
             </div>
-            <div>
-                <?php if (isset($data["errorValidacion"])) { ?>
-                <p class="alert alert-danger"><?php echo $data["errorValidacion"] ?></p>
-                <?php } ?>
+            <div class="form-container">             
+                <div class="text-form">
+                    <p>Empieza tu aventura</p>
+                    <h1>Inicia sesión en Padel Fantasy</h1>
+                </div>
                 <form action="<?php echo $rutaApp ?>login/validarLogin" method="POST">
-                    <div>
-                        <label for="usuario">Usuario: </label>
-                        <input type="text" id="usuario" name="usuario">
+                    <input type="text" id="usuario" name="usuario" placeholder="Nombre de usuario">
+                    <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña">
+                    <?php if (isset($data["errorValidacion"])) { ?>
+                    <div class="alert-text">
+                        <p><?php echo $data["errorValidacion"] ?></p>
                     </div>
-                    <div>
-                        <label for="contrasena">Contraseña: </label>
-                        <input type="password" id="contrasena" name="contrasena">
-                    </div>
-                    <div>
-                        <button class="btn btn-primary" type="submit">Enviar</button>
-                    </div>
+                    <?php } ?>  
+                    <button type="submit">Iniciar sesión</button>
                 </form>
-                <p>¿No tienes una cuenta? <a href="<?php echo $rutaApp ?>registro/accederRegistro" >Regístrate</a></p>
-                <p>¿Tienes algún problema? <a href="<?php echo $rutaApp ?>contacto/accederContacto" >Contáctanos</a></p> 
+                <div class="text-form">
+                    <p>¿No tienes una cuenta? <a href="<?php echo $rutaApp ?>registro/accederRegistro" >Regístrate</a></p>
+                    <p>¿Tienes algún problema al iniciar sesión? <a href="<?php echo $rutaApp ?>contacto/accederContacto" >Contáctanos</a></p>
+                </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <img src="../assets/img/portada.jpg" alt="Portada Fantasy Padel">
-        </div>
-    </div>
+        </section>
+        <section class="portada-container">
+            <img class="img-padel" src="../assets/img/portada.jpg" alt="Portada Fantasy Padel">
+        </section>
+    </main>
 </body>
 </html>
