@@ -1,5 +1,21 @@
 @media screen and (max-width: 768px) {
-    /* Estilar la media query para mejorar el RESPONSIVE de la imagen de portada */   
+    
+    .main-container {
+        flex-direction: column;
+    }
+
+    .portada-container {
+        position: fixed;
+        top: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100vh;
+    }
+
+    .login-container {
+        background: rgba(216, 216, 216, 0.6);
+    }
+
 }
 
 * {
@@ -10,66 +26,49 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    height: 100%;
-    width: 100%;
 }
 
 .main-container {
     display: flex;
-    flex-wrap: nowrap;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0;
-    justify-content: space-between;
-    height: 100vh;
 }
 
-.img-padel {
-    width: 50vw;
-    height: 100%;
-    object-fit: cover;
+.portada-container {
+    background-image: url(../img/portada.jpg);
+    background-position: center center;
+    background-size: cover;
+    min-height: 100vh;
+    flex: 1;
 }
 
 .login-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    width: 50vw;
-    height: 100%;
-    /* background-color: #50a8ca; */
+    min-height: 100vh;
+    flex: 1;
 }
 
 .logo-container {
     width: 100%;
-    padding-top: 20px;
-    padding-left: 20px;
+    padding: 20px;
+    margin-bottom: 70px;
 }
 
 .logo-container img {
-    width: 30%;
-    height: 50%;
-    object-fit: cover;
+    width: 20%;
     border-radius: 3px;
 }
 
 .form-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    background: white;
     width: 50%;
-    height: 70%;
+    min-height: 70%;
+    margin-bottom: 70px;
 }
 
 .text-form {
-    margin-top: 50px;
-    margin-bottom: 35px;
     text-align: center;
-}
-
-.text-form p {
-    margin-bottom: -10px;
 }
 
 .text-form a {
@@ -84,7 +83,7 @@ form {
     padding: 20px;
 }
 
-form input {
+form input, form button {
     padding: 20px 15px;
     border: 1px solid #dadada;
     border-radius: 5px;
@@ -96,9 +95,6 @@ form input:focus {
 }
 
 form button {
-    margin-top: 10px;
-    padding: 20px 15px;
-    border: 1px solid #dadada;
     border-radius: 5px;
     background-color: #2971db;
     color: white;

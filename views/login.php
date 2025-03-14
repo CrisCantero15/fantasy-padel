@@ -28,15 +28,15 @@
                     </div>
                     <?php } ?>  
                     <button type="submit">Iniciar sesión</button>
-                </form>
-                <div class="text-form">
+                    <div class="text-form">
                     <p>¿No tienes una cuenta? <a href="<?php echo $rutaApp ?>registro/accederRegistro" >Regístrate</a></p>
                     <p>¿Tienes algún problema al iniciar sesión? <a href="<?php echo $rutaApp ?>contacto/accederContacto" >Contáctanos</a></p>
-                </div>
+                    </div>
+                </form>
             </div>
         </section>
         <section class="portada-container">
-            <img class="img-padel" src="../assets/img/portada.jpg" alt="Portada Fantasy Padel">
+            <!-- <img class="img-padel" src="../assets/img/portada.jpg" alt="Portada Fantasy Padel"> -->
         </section>
     </main>
 </body>
