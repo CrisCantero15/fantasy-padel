@@ -83,13 +83,13 @@ form {
     padding: 20px;
 }
 
-form input, form button {
+form input, form button, form textarea {
     padding: 20px 15px;
     border: 1px solid #dadada;
     border-radius: 5px;
 }
 
-form input:focus {
+form input:focus, form textarea:focus {
     outline: none;
     border: 1px solid #2971db;
 }
