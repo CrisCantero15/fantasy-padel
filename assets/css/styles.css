@@ -109,11 +109,20 @@ form button:active {
     background-color: #1a4c6e;
 }
 
-.alert-text {
+.alert-text-warning {
     background: #e49aa4;
     border: 1px solid red;
     border-radius: 5px;
     text-align: center;
     color: red;
+    margin: 10px 0;
+}
+
+.alert-text-success {
+    background: #a0e49a;
+    border: 1px solid green;
+    border-radius: 5px;
+    text-align: center;
+    color: green;
     margin: 10px 0;
 }

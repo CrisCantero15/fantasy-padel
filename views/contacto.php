@@ -15,13 +15,18 @@
                     <h1>Contacto</h1>
                     <p>Si tienes alguna incidencia o sugerencia, por favor, escríbenos</p>
                 </div>
-                <form action="<?php echo $rutaApp ?>contacto/enviarCorreo" method="POST">
+                <form action="<?php echo $rutaApp ?>contacto/establecerContacto" method="POST">
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre">
                     <input type="email" id="email" name="email" placeholder="Email">
                     <textarea id="mensaje" name="mensaje" placeholder="Escribe tu incidencia..."></textarea>
                     <?php if (isset($data["errorEnvio"])) { ?>
-                    <div class="alert-text">
+                    <div class="alert-text-warning">
                         <p><?php echo $data["errorEnvio"] ?></p>
+                    </div>
+                    <?php } 
+                    if (isset($data["exitoEnvio"])) { ?>
+                    <div class="alert-text-success">
+                        <p><?php echo $data["exitoEnvio"] ?></p>
                     </div>
                     <?php } ?> 
                     <button type="submit">Enviar</button>
