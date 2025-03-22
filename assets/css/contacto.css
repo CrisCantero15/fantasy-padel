@@ -1,0 +1,66 @@
+/* Estilos CSS para el header (Contacto) */
+
+@media screen and (max-width: 768px) {
+    
+    header div p {
+        font-size: 1rem;
+    }
+
+    header div img {
+        padding-right: 20px;
+    }
+
+
+}
+
+header {
+    background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);
+    display: flex;
+    min-height: 16vh;
+    min-width: 100vw;
+    padding: 0 12.5vw;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+header img {
+    max-width: 6rem;
+}
+
+header p {
+    font-size: 1.5rem;
+    color: #F5F5DC;
+    font-weight: bold;
+    text-shadow: 0 4px 10px black;
+}
+
+.form-contact {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    width: 60vw;
+    margin: 6vh auto;
+    padding: 0 5vw;
+    overflow: hidden;
+}
+
+.form-contact h1 {
+    font-size: 2.25rem;
+}
+
+.form-contact h2 {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+form button {
+    margin: 0 auto;
+    width: 20vw;
+    border: 1px solid #dadada;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

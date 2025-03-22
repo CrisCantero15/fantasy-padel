@@ -6,7 +6,7 @@ class ContactoModelo {
 
     }
 
-    public function enviarCorreo($name, $email, $mensaje) {
+    public function enviarCorreo($name, $email, $motivo, $mensaje) {
 
         // Conectar a la BBDD para guardar el mensaje en la tabla de emails
 

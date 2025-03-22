@@ -1,0 +1,69 @@
+@media screen and (max-width: 768px) {
+    
+    .main-container {
+        flex-direction: column;
+    }
+
+    .portada-container {
+        position: fixed;
+        top: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100vh;
+    }
+
+    .login-container {
+        background: rgba(216, 216, 216, 0.6);
+    }
+
+}
+
+/* Estilos CSS para el login */
+
+.main-container {
+    display: flex;
+}
+
+.portada-container {
+    background-image: url(../img/portada.jpg);
+    background-position: center center;
+    background-size: cover;
+    min-height: 100vh;
+    flex: 1;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    flex: 1;
+}
+
+.logo-container {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 70px;
+}
+
+.logo-container img {
+    width: 20%;
+    border-radius: 3px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-bottom: 120px;
+    gap: 20px;
+}
+
+.text-form {
+    text-align: center;
+}
+
+.text-form a {
+    color: #3D6CA1;
+    text-decoration: none;
+}
