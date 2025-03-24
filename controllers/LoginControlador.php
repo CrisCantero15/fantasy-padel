@@ -25,13 +25,22 @@ class LoginControlador {
             $instanciaModelo = new LoginModelo();
             $usuarioValidado = $instanciaModelo->validarUsuario($usuario, $contrasena);
 
-            if (!$usuarioValidado) { // CAMBIAR CUANDO SE HAYA HECHO LA CONEXIÓN Y VALIDACIÓN CON LA BASE DE DATOS (EN REALIDAD DEBE SER $usuarioValidado)
-
-                $_SESSION["usuario"] = $usuario;
+            if ($usuarioValidado) {
+                
+                $_SESSION["usuario"] = $usuario; // CAMBIAR PARA iniciarSesion() de GestorSesion
                 require_once('./config/Enrutador.php');
                 $enrutador = new Enrutador();
                 $rutaApp = $enrutador->getRutaServidor();
-                header("Location: " . $rutaApp . "inicio/accederInicio");
+                
+                if ($usuario === 'admin') {
+
+                    header("Location: " . $rutaApp . "admin/accederAdmin"); //
+
+                } else {
+
+                    header("Location: " . $rutaApp . "inicio/accederInicio");
+
+                }
 
             } else {
 

@@ -8,6 +8,10 @@ class Configuracion {
 
     private static $instanciaConfiguracion = null;
     private $rutaServidor = "http://localhost/fantasy-padel/";
+    private $servidorBD = "localhost";
+    private $usuarioBD = "root";
+    private $passwordBD = "";
+    private $nombreBD = "fantasy";
     // Añadir más variables de configuración
 
     public static function getInstancia() {
@@ -22,6 +26,10 @@ class Configuracion {
     }
 
     // Añadir los métodos GET para obtener más variables de configuración (ruta BD, variables de configuración de la BD, etc.)
+
+    public function getConfiguracionBD() {
+        return [$this->servidorBD, $this->usuarioBD, $this->passwordBD, $this->nombreBD];
+    }
 
 }
 
