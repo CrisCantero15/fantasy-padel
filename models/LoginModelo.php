@@ -11,8 +11,6 @@ class LoginModelo {
         $consulta = "SELECT * FROM `usuarios` WHERE `nombre` = ? AND `contrasena` = ?";
         $resultado = GestorBD::consultaLectura($consulta, $usuario, $contrasena);
 
-        var_dump($resultado);
-
         return $resultado;
 
     }

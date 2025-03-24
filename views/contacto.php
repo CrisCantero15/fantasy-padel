@@ -25,8 +25,8 @@
                     <h2>Si tienes alguna incidencia o sugerencia, por favor, escríbenos</h2>
                 </div>
                 <form action="<?php echo $rutaApp ?>contacto/establecerContacto" method="POST">
-                    <input type="text" id="nombre" name="nombre" placeholder="Nombre">
-                    <input type="email" id="email" name="email" placeholder="Email">
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
                     <select name="motivo" id="motivo">
                         <option value="" selected>Motivo de la consulta</option>
                         <option value="funcionamiento">Funciona mal la página web</option>
@@ -34,7 +34,7 @@
                         <option value="colaboración">Me gustaría colaborar con el proyecto</option>
                         <option value="otro">Otros</option>
                     </select>
-                    <textarea id="mensaje" name="mensaje" placeholder="Escribe tu incidencia..."></textarea>
+                    <textarea id="mensaje" name="mensaje" maxlength="255" placeholder="Escribe tu incidencia..." required></textarea>
                     <?php if (isset($data["errorEnvio"])) { ?>
                     <div class="alert-text-warning">
                         <p><?php echo $data["errorEnvio"] ?></p>

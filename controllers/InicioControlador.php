@@ -8,18 +8,20 @@ class InicioControlador {
 
     public function accederInicio() {
 
+        require_once "./lib/GestorSesion.php";
         $instanciaSesion = new GestorSesion();
-        $validarSesion = $instanciaSesion->comprobarSesion();
+        
+        if (!$instanciaSesion->comprobarSesion()){
 
-        if(!$validarSesion) {
-            
             require_once('./config/Enrutador.php');
             $enrutador = new Enrutador();
             $rutaApp = $enrutador->getRutaServidor();
             header("Location: " . $rutaApp . "login/accederLogin");
             exit();
 
-        } else {
+        }
+        
+        else {
             
             require_once("views/Vista.php");
             $vista = new Vista();

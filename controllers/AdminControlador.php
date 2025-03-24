@@ -8,9 +8,16 @@ Class AdminControlador {
 
     public function accederAdmin(){
 
-        require_once("views/Vista.php");
-        $vista = new Vista();
-        $vista->renderizarVista("admin");
+        require_once "./lib/GestorSesion.php";
+        $instanciaSesion = new GestorSesion();
+
+        if ($instanciaSesion->comprobarSesion()){
+
+            require_once("views/Vista.php");
+            $vista = new Vista();
+            $vista->renderizarVista("admin");
+
+        }
 
     }
 

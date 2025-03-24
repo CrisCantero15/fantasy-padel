@@ -65,7 +65,7 @@ class GestorBD {
 
     }
 
-    public static function consultaInsercion($consulta, $parametros) {
+    public static function consultaInsercion($consulta, ...$parametros) {
 
         $conexion = self::conectarBD();
         $consultaPreparada = self::prepararConsulta($conexion, $consulta, ...$parametros);

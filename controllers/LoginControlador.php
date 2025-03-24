@@ -27,7 +27,10 @@ class LoginControlador {
 
             if ($usuarioValidado) {
                 
-                $_SESSION["usuario"] = $usuario; // CAMBIAR PARA iniciarSesion() de GestorSesion
+                require_once "./lib/GestorSesion.php";
+                $instanciaSesion = new GestorSesion();
+                $instanciaSesion->iniciarSesion($usuario);
+
                 require_once('./config/Enrutador.php');
                 $enrutador = new Enrutador();
                 $rutaApp = $enrutador->getRutaServidor();
