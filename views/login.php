@@ -39,9 +39,9 @@
                 </form>
             </div>
         </section>
-        <section class="portada-container">
+        <div class="portada-container">
             <!-- <img class="img-padel" src="../assets/img/portada.jpg" alt="Portada Fantasy Padel"> -->
-        </section>
+        </div>
     </main>
 </body>
 </html>
