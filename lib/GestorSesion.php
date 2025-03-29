@@ -15,33 +15,35 @@ class GestorSesion {
         
         // IMPORTANTE: tener en cuenta crear una sesión que expire cada X tiempo cuando el usuario está inactivo
 
-        session_id(md5('FANTASYPADEL'));
+        // session_id(md5('FANTASYPADEL' . uniqid(mt_rand(), true)));
+        session_regenerate_id(true); // Regenerar el ID de sesión para evitar ataques de fijación de sesión
+        $_SESSION["id"] = session_id();
         $_SESSION["usuario"] = $usuario;
         $_SESSION["tiempoInicio"] = time();
+        $_SESSION["ip"] = $_SERVER["REMOTE_ADDR"]; // Guardar la IP del usuario para mayor seguridad
+        $_SESSION["userAgent"] = $_SERVER["HTTP_USER_AGENT"]; // Guardar el user agent del navegador para mayor seguridad
 
     }
 
     public function comprobarSesion() {
 
+        // Mejorar la seguridad de la comprobación de los parámetros de sesión (mirar VC DAW)
+
         if (isset($_SESSION["usuario"])) {
             
             // Establece que la sesión esté activa hasta 60 minutos de inactividad
 
-            $tiempo_maximo = 60 * 60; // Máximo de 60 minutos de inactividad
+            $tiempo_maximo = 60 * 60; // 60 minutos de inactividad
+
+            if ($_SESSION["ip"] !== $_SERVER["REMOTE_ADDR"] || $_SESSION["userAgent"] !== $_SERVER["HTTP_USER_AGENT"]) {
+                $this->cerrarSesion();
+            }
 
             if(time() - $_SESSION["tiempoInicio"] > $tiempo_maximo){
-
-                session_unset();
-                session_destroy();
-                $enrutador = new Enrutador();
-                $rutaApp = $enrutador->getRutaServidor();
-                header("Location: " . $rutaApp . "login/accederLogin");
-                exit();
-
+                $this->cerrarSesion();
             };
 
-            $_SESSION["tiempoInicio"] = time();
-
+            $_SESSION["tiempoInicio"] = time(); // Actualizar el tiempo de inicio de sesión
             return true;
 
         } else {
@@ -56,6 +58,15 @@ class GestorSesion {
         
         session_unset();
         session_destroy();
+
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+
         $enrutador = new Enrutador();
         $rutaApp = $enrutador->getRutaServidor();
         header("Location: " . $rutaApp . "login/accederLogin");
