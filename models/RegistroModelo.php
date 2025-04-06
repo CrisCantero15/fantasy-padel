@@ -1,5 +1,7 @@
 <?php
 
+require_once './lib/GestorBD.php';
+
 class RegistroModelo {
 
     public function __construct() {
@@ -9,7 +11,13 @@ class RegistroModelo {
     public function registrarUsuario($username, $email, $password) {
 
         // Proceso de registrar el usuario en la BBDD
-        // IMPORTANTE: hashear la contraseña recibida del Controlador
+
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        $consulta = "INSERT INTO `usuarios` (`nombre`, `email`, `contrasena`) VALUES (?, ?, ?)";
+        $resultado = GestorBD::consultaInsercion($consulta, $username, $email, $hash);
+
+        return $resultado;
 
     }
 

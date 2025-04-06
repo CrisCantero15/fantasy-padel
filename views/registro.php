@@ -27,21 +27,25 @@
                 <form action="<?php echo $rutaApp ?>registro/validarRegistro" method="POST">
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre" autocomplete="username" required>
                     <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" required>
-                    <input type="password" id="password" name="password" placeholder="Contraseña" autocomplete="new-password" required>
+                    <input type="password" id="password" name="password" minlength="8" maxlength="16" placeholder="Contraseña" autocomplete="new-password" required>
                     <input type="password" id="confirmarPassword" name="confirmarPassword" placeholder="Confirmar contraseña" autocomplete="new-password" required>
-                    <?php if (isset($data["errorValidacion"])) { ?>
+                    <?php if (isset($data["errorRegistro"])) { ?>
                     <div class="alert-text-warning">
-                        <p><?php echo $data["errorValidacion"] ?></p>
+                        <p><?php echo $data["errorRegistro"] ?></p>
                     </div>
                     <?php } ?>
                     <button type="submit">Enviar</button>
                 </form>
             </div>
+            <?php if (isset($data["exitoRegistro"])) { ?>
             <div id="modal-register">
                 <div>
-
+                    <h1>¡Registro completado!</h1>
+                    <p><?php echo $data["exitoRegistro"] ?></p>
+                    <button onclick="window.location.href='<?php echo $rutaApp ?>registro/iniciarLogin'">Iniciar sesión</button>
                 </div>
             </div>
+            <?php } ?>
         </section>
     </main>
 </body>

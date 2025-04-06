@@ -8,6 +8,8 @@ class LoginControlador {
 
     public function accederLogin() {
 
+        // Una vez hecho el botón de cerrar sesión en inicio, comprobar aquí si existe una sesión iniciada para evitar accesos no autorizados desde la URL
+
         require_once("./views/Vista.php");
         $vista = new Vista();
         $vista->renderizarVista("login");
@@ -16,6 +18,8 @@ class LoginControlador {
 
     public function validarLogin() {
         
+        // Una vez hecho el botón de cerrar sesión en inicio, comprobar aquí si existe una sesión iniciada para evitar accesos no autorizados desde la URL
+
         if (isset($_POST["usuario"]) && isset($_POST["contrasena"]) && !empty($_POST["usuario"]) && !empty($_POST["contrasena"])) {
 
             $usuario = $_POST["usuario"];
@@ -37,7 +41,7 @@ class LoginControlador {
                 
                 if ($usuario === 'admin') {
 
-                    header("Location: " . $rutaApp . "admin/accederAdmin"); //
+                    header("Location: " . $rutaApp . "admin/accederAdmin");
 
                 } else {
 

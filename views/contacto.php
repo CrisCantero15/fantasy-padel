@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <div><a href="<?php echo $rutaApp ?>/inicio/accederInicio"><img src="../assets/img/logo.png" alt="Logo Fantasy Padel"></a></div>
+        <div><a href="<?php echo $rutaApp ?>inicio/accederInicio"><img src="../assets/img/logo.png" alt="Logo Fantasy Padel"></a></div>
         <div>
             <p>¡Forma tu equipo en Fantasy Padel y conquista la pista!</p>
         </div>
@@ -45,7 +45,7 @@
                     <div class="alert-text-success">
                         <p><?php echo $data["exitoEnvio"] ?></p>
                     </div>
-                    <?php } ?> 
+                    <?php } ?>
                     <button type="submit">Enviar</button>
                 </form>
             </div>

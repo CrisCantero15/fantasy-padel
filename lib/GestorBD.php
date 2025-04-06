@@ -57,7 +57,7 @@ class GestorBD {
         $consultaPreparada->execute();
         $resultado = $consultaPreparada->get_result();
 
-        if($resultado->num_rows > 0) {
+        if ($resultado->num_rows > 0) {
 
             return $resultado->fetch_all(MYSQLI_ASSOC);
 
@@ -79,10 +79,14 @@ class GestorBD {
     }
 
     public static function desconectarBD() {
-        if(self::$conexion){
+        
+        if (self::$conexion) {
+
             self::$conexion->close();
             self::$conexion = null;
+
         }
+
     }
 
 }

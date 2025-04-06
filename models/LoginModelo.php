@@ -1,17 +1,25 @@
 <?php
 
+require_once "./lib/GestorBD.php";
+
 class LoginModelo {
 
     public function validarUsuario($usuario, $contrasena) {
 
         // Conectar con la BD para validar que el usuario y la contraseña existen
 
-        require_once "./lib/GestorBD.php";
+        $consulta = "SELECT * FROM `usuarios` WHERE `nombre` = ?";
+        $resultado = GestorBD::consultaLectura($consulta, $usuario);
 
-        $consulta = "SELECT * FROM `usuarios` WHERE `nombre` = ? AND `contrasena` = ?";
-        $resultado = GestorBD::consultaLectura($consulta, $usuario, $contrasena);
+        if ($resultado && password_verify($contrasena, $resultado[0]["contrasena"])) {
+            
+            return $resultado;
 
-        return $resultado;
+        } else {
+
+            return null;
+
+        }
 
     }
 
