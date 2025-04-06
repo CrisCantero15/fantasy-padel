@@ -1,5 +1,9 @@
 <?php
 
+require_once "./lib/GestorSesion.php";
+require_once('./config/Enrutador.php');
+require_once("views/Vista.php");
+
 class InicioControlador {
 
     public function __construct() {
@@ -8,12 +12,10 @@ class InicioControlador {
 
     public function accederInicio() {
 
-        require_once "./lib/GestorSesion.php";
         $instanciaSesion = new GestorSesion();
         
         if (!$instanciaSesion->comprobarSesion()){
 
-            require_once('./config/Enrutador.php');
             $enrutador = new Enrutador();
             $rutaApp = $enrutador->getRutaServidor();
             header("Location: " . $rutaApp . "login/accederLogin");
@@ -23,11 +25,17 @@ class InicioControlador {
         
         else {
             
-            require_once("views/Vista.php");
             $vista = new Vista();
             $vista->renderizarVista("inicio");
 
         }
+
+    }
+
+    public function cerrarSesion() {
+
+        $instanciaSesion = new GestorSesion();
+        $instanciaSesion->cerrarSesion();
 
     }
 

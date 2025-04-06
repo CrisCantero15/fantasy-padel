@@ -42,7 +42,7 @@
                 <div>
                     <h1>¡Registro completado!</h1>
                     <p><?php echo $data["exitoRegistro"] ?></p>
-                    <button onclick="window.location.href='<?php echo $rutaApp ?>registro/iniciarLogin'">Iniciar sesión</button>
+                    <button id="btn-modal" onclick="window.location.href='<?php echo $rutaApp ?>registro/iniciarLogin'">Iniciar sesión</button>
                 </div>
             </div>
             <?php } ?>

@@ -9,5 +9,6 @@
 <body>
     <p>¡Bienvenido a la Administración de Padel Fantasy!</p>
     <!-- Maquetar el panel de administración de la aplicación -->
+    <button onclick="window.location.href='<?php echo $rutaApp . 'admin/cerrarSesion'; ?>'">Cerrar sesión</button>
 </body>
 </html>

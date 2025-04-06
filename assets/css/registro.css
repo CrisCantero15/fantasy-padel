@@ -49,7 +49,7 @@ main {
     font-weight: 500;
 }
 
-button {
+form button {
     margin: 0 auto;
     width: 20vw;
     border: 1px solid #dadada;
@@ -85,4 +85,8 @@ button {
     color: black;
     text-decoration: none;
     font-size: 1.25rem;
+}
+
+#btn-modal {
+    /* Darle CSS al botón de cerrar el modal */
 }

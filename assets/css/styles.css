@@ -31,19 +31,19 @@ form input:focus, form textarea:focus, form select:focus {
     border: 1px solid #3D6CA1;
 }
 
-button {
+form button {
     border-radius: 10px;
     background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);;
     color: white;
     font-weight: bold;
 }
 
-button:hover {
+form button:hover {
     background: #1e5f8a;
     cursor: pointer;
 }
 
-button:active {
+form button:active {
     background: #1a4c6e;
 }
 
