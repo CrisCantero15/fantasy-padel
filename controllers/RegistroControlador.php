@@ -14,6 +14,12 @@ class RegistroControlador {
 
     }
 
+    public function validarRegistro() {
+
+        // Obtener los datos del formulario y validar los campos para hacer el registor en la BBDD
+
+    }
+
 }
 
 ?>

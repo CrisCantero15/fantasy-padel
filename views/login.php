@@ -24,13 +24,13 @@
                     <h1>Inicia sesión en Padel Fantasy</h1>
                 </div>
                 <form action="<?php echo $rutaApp ?>login/validarLogin" method="POST">
-                    <input type="text" id="usuario" name="usuario" placeholder="Nombre de usuario">
-                    <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña">
+                    <input type="text" id="usuario" name="usuario" placeholder="Nombre de usuario" autocomplete="username">
+                    <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" autocomplete="current-password">
                     <?php if (isset($data["errorValidacion"])) { ?>
                     <div class="alert-text-warning">
                         <p><?php echo $data["errorValidacion"] ?></p>
                     </div>
-                    <?php } ?>  
+                    <?php } ?>
                     <button type="submit">Iniciar sesión</button>
                     <div class="text-form">
                     <p>¿No tienes una cuenta? <a href="<?php echo $rutaApp ?>registro/accederRegistro" >Regístrate</a></p>

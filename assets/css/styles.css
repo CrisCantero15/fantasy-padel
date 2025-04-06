@@ -36,11 +36,11 @@ form button {
     background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);;
     color: white;
     font-weight: bold;
-
 }
 
 form button:hover {
     background: #1e5f8a;
+    cursor: pointer;
 }
 
 form button:active {
