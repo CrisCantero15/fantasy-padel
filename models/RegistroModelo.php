@@ -6,10 +6,10 @@ class RegistroModelo {
         
     }
 
-    public function registrarUsuario(){
+    public function registrarUsuario($username, $email, $password) {
 
         // Proceso de registrar el usuario en la BBDD
-        // IMPORTANTE: hashear la contraseña recibidia del Controlador
+        // IMPORTANTE: hashear la contraseña recibida del Controlador
 
     }
 
