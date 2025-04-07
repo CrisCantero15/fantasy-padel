@@ -1,43 +1,77 @@
 /* Estilos CSS para la página de registro de usuarios */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 736px) {
     
-    
+    #logo-register {
+        width: 20vw !important;
+    }
+
     .form-register h1 {
-        font-size: 1.5rem !important;
+        font-size: 1.75rem !important;
     }
     
     .form-register h2 {
         font-size: 1rem !important;
     }
 
+    .form-register input, .form-register button {
+        font-size: 0.75rem !important;
+        padding: 1rem 1rem !important;
+    }
+
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
 }
 
 main {
-    height: 100vh;
+    padding: 20px 0;
+    position: relative;
+    min-height: 100vh;
     background-image: linear-gradient(rgba(125, 125, 125, 0.6), rgba(180, 202, 250, 0.6)), url(../img/registro_fondo.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo-register {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    width: 10vw;
+}
+
+#logo-register img {
+    width: 100%;
+    height: auto;
 }
 
 .form-register {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    gap: 20px;
+    gap: 10%;
     border-radius: 10px;
     width: 60vw;
     min-height: 70vh;
-    padding: 0 5vw;
+    padding: 0px 5vw;
     padding-bottom: 5vh;
-    overflow: hidden;
 }
 
 .form-register h1 {
@@ -49,12 +83,54 @@ main {
     font-weight: 500;
 }
 
-form button {
-    margin: 0 auto;
-    width: 20vw;
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form input, form button, form textarea, form select {
+    padding: 1.5rem 1rem;
     border: 1px solid #dadada;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    border-radius: 10px;
+    font-family: Arial;
+}
+
+form input:focus, form textarea:focus, form select:focus {
+    outline: none;
+    border: 1px solid #3D6CA1;
+}
+
+form button {
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);
+    color: white;
+    font-weight: bold;
+}
+
+form button:hover {
+    background: #1e5f8a;
+    cursor: pointer;
+}
+
+form button:active {
+    background: #1a4c6e;
+}
+
+.alert-text-warning {
+    background: #e49aa4;
+    border: 1px solid red;
+    border-radius: 10px;
+    text-align: center;
+    color: red;
+}
+
+.alert-text-success {
+    background: #a0e49a;
+    border: 1px solid green;
+    border-radius: 10px;
+    text-align: center;
+    color: green;
 }
 
 #modal-register {
@@ -68,25 +144,44 @@ form button {
     z-index: 1;
 }
 
-#modal-register div {
+#modal-register > div {
+    color: #F5F5DC;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40%;
-    min-height: 50%;
+    width: 50%;
+    min-height: 30%;
     background: linear-gradient(to bottom, #3C454D, #8BA0B3);
     border-radius: 10px;
     padding: 40px 20px;
     text-align: center;
-}
-
-#modal-register a {
-    color: black;
-    text-decoration: none;
-    font-size: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
 }
 
 #btn-modal {
-    /* Darle CSS al botón de cerrar el modal */
+    margin: 0 auto;
+    margin-bottom: 10px;
+    width: 20vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 1.5rem 1rem;
+    border: 1px solid #dadada;
+    border-radius: 10px;
+    font-family: Arial;
+}
+
+#btn-modal:hover {
+    background: #1e5f8a;
+}
+
+#btn-modal:active {
+    background: #1a4c6e;
 }

@@ -60,20 +60,27 @@ class RegistroControlador {
                 $instanciaModelo = new RegistroModelo();
                 $resultado = $instanciaModelo->registrarUsuario($nombre, $email, $password);
 
-                if ($resultado) {
+                if (is_bool($resultado) && $resultado) {
+                    
+                    // Si el registro es exitoso, iniciamos sesión y redirigimos al usuario a la página de inicio
 
                     $data["exitoRegistro"] = "Usuario registrado correctamente. ¡Estimado/a " . $nombre . ", bienvenido a Padel Fantasy!";
                     $_SESSION["usuarioRegistro"] = $nombre;
-                    $vista = new Vista();
-                    $vista->renderizarVista("registro", $data);
     
+                } else if (is_string($resultado)) {
+
+                    // Si el registro falla porque el usuario o email ya existen, mostramos un mensaje de error
+
+                    $data["errorRegistro"] = $resultado;
+
                 } else {
 
-                    $data["errorRegistro"] = "Error en el registro. Por favor, revisa los campos e inténtalo de nuevo.";
-                    $vista = new Vista();
-                    $vista->renderizarVista("registro", $data);
+                    $data["errorRegistro"] = $resultado;
 
                 }
+
+                $vista = new Vista();
+                $vista->renderizarVista("registro", $data);
             
             } else {
 
