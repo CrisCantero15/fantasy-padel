@@ -1,5 +1,10 @@
 <?php
 
+require_once("./views/Vista.php");
+require_once("./models/LoginModelo.php");
+require_once "./lib/GestorSesion.php";
+require_once('./config/Enrutador.php');
+
 class LoginControlador {
 
     public function __construct() {
@@ -10,7 +15,6 @@ class LoginControlador {
 
         // Una vez hecho el botón de cerrar sesión en inicio, comprobar aquí si existe una sesión iniciada para evitar accesos no autorizados desde la URL
 
-        require_once("./views/Vista.php");
         $vista = new Vista();
         $vista->renderizarVista("login");
 
@@ -25,17 +29,13 @@ class LoginControlador {
             $usuario = $_POST["usuario"];
             $contrasena = $_POST["contrasena"];
 
-            require_once("./models/LoginModelo.php");
             $instanciaModelo = new LoginModelo();
             $usuarioValidado = $instanciaModelo->validarUsuario($usuario, $contrasena);
 
             if ($usuarioValidado) {
                 
-                require_once "./lib/GestorSesion.php";
                 $instanciaSesion = new GestorSesion();
                 $instanciaSesion->iniciarSesion($usuario);
-
-                require_once('./config/Enrutador.php');
                 $enrutador = new Enrutador();
                 $rutaApp = $enrutador->getRutaServidor();
                 
@@ -52,7 +52,6 @@ class LoginControlador {
             } else {
 
                 $data["errorValidacion"] = "Usuario o contraseña incorrectos";
-                require_once("./views/Vista.php");
                 $vista = new Vista();
                 $vista->renderizarVista("login", $data);
 
@@ -61,7 +60,6 @@ class LoginControlador {
         } else { 
 
             $data["errorValidacion"] = "Introduzca los datos correctamente";
-            require_once("./views/Vista.php");
             $vista = new Vista();
             $vista->renderizarVista("login", $data);
 

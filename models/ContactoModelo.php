@@ -1,5 +1,7 @@
 <?php
 
+require_once './lib/GestorBD.php';
+
 class ContactoModelo {
 
     public function __construct() {
@@ -9,8 +11,7 @@ class ContactoModelo {
     public function enviarCorreo($nombre, $email, $motivo, $mensaje) {
 
         // Conectar a la BBDD para guardar el mensaje en la tabla de emails
-
-        require_once './lib/GestorBD.php';
+        // Mejorar la recogida de errores (añadir estructura try-catch)
 
         $consulta = "INSERT INTO `contacto` (`nombre`, `email`, `motivo`, `mensaje`) VALUES (?, ?, ?, ?)";
         $resultado = GestorBD::consultaInsercion($consulta, $nombre, $email, $motivo, $mensaje);

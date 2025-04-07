@@ -4,6 +4,9 @@
 // Se encarga de buscar la información de los modelos o a mostrar la vista correspondiente
 // Recibimos los datos de CONTROLADOR y ACCIÓN mediante el método GET en la URL, lo cual define el controlador y la acción a ejecutar (ver helpers/secciones.png)
 
+require_once("./views/Vista.php");
+require_once("./controllers/InicioControlador.php");
+
 class Controlador {
 
     public function cargarControlador() {
@@ -43,7 +46,6 @@ class Controlador {
                 } else {
                     
                     $data['errorValidacion'] = 'Imposible realizar la acción solicitada';
-                    require_once("./views/Vista.php");
                     $vista = new Vista();
                     $vista->renderizarVista("error404", $data);
     
@@ -61,7 +63,6 @@ class Controlador {
         
         } else {
             
-            require_once("./controllers/InicioControlador.php");
             $instanciaControlador = new InicioControlador();
             $instanciaControlador->accederInicio();
 

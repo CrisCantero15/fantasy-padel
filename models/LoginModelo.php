@@ -6,7 +6,7 @@ class LoginModelo {
 
     public function validarUsuario($usuario, $contrasena) {
 
-        // Conectar con la BD para validar que el usuario y la contraseña existen
+        // Mejorar la recogida de errores (añadir estructura try-catch)
 
         $consulta = "SELECT * FROM `usuarios` WHERE `nombre` = ?";
         $resultado = GestorBD::consultaLectura($consulta, $usuario);

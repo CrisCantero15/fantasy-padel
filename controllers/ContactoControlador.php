@@ -1,5 +1,8 @@
 <?php
 
+require_once "views/Vista.php";
+require_once "models/ContactoModelo.php";
+
 class ContactoControlador {
 
     public function __construct() {
@@ -8,7 +11,6 @@ class ContactoControlador {
 
     public function accederContacto() {
         
-        require_once "views/Vista.php";
         $vista = new Vista();
         $vista->renderizarVista("contacto");
 
@@ -27,13 +29,11 @@ class ContactoControlador {
 
                 // Guardamos el mensaje de contacto del usuario en la BBDD
 
-                require_once "models/ContactoModelo.php";
                 $modelo = new ContactoModelo(); // ¡OJO! Hay que crear el modelo de Contacto correctamente para que funcione todo con éxito
                 $modelo->enviarCorreo($nombre, $email, $motivo, $mensaje);
 
                 // Insertamos la vista del contacto que muestra un mensaje de éxito al usuario
 
-                require_once "views/Vista.php";
                 $data["exitoEnvio"] = "Gracias por contactar con nosotros, próximamente recibirás respuesta sobre tu incidencia";
                 $vista = new Vista();
                 $vista->renderizarVista("contacto", $data);
@@ -41,7 +41,6 @@ class ContactoControlador {
             } else {
                     
                     $data["errorEnvio"] = "Faltan campos por rellenar";
-                    require_once "views/Vista.php";
                     $vista = new Vista();
                     $vista->renderizarVista("contacto", $data);
                 
