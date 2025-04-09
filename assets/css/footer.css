@@ -1,0 +1,64 @@
+/* HACER RESPONSIVE */
+/* AÑADIR EFECTOS Y HOVER */
+
+footer {
+    background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);
+    display: flex;
+    min-height: 16vh;
+    min-width: 100vw;
+    padding: 0 12.5vw;
+    justify-content: space-between;
+    align-items: center;
+    /* box-shadow: 0 3px 10px black; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-social #media {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    text-shadow: 0 2px 5px black;
+}
+
+.footer-social p {
+    color: #F5F5DC;
+    font-weight: 1000;
+    text-shadow: 0 2px 5px black;
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.footer-contact {
+    font-size: 1.2rem;
+    font-weight: 1000;
+    text-shadow: 0 2px 5px black;
+}
+
+.footer-contact a {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    color: #F5F5DC;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.footer-contact a i, #media i {
+    font-size: 1.9rem;
+    color: #F5F5DC;
+}
+
+.footer-contact a p {
+    margin-top: 5px;
+}
