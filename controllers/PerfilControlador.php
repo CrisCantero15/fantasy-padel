@@ -15,6 +15,12 @@ class PerfilControlador {
 
     }
 
+    public function enviarDatos() {
+
+        
+
+    }
+
 }
 
 ?>
