@@ -66,6 +66,7 @@ class RegistroControlador {
 
                     $data["exitoRegistro"] = "Usuario registrado correctamente. ¡Estimado/a " . $nombre . ", bienvenido a Padel Fantasy!";
                     $_SESSION["usuarioRegistro"] = $nombre;
+                    $_SESSION["contrasenaRegistro"] = $password;
     
                 } else if (is_string($resultado)) {
 
@@ -114,9 +115,17 @@ class RegistroControlador {
 
         } else {
 
-            $instanciaGestorSesion->iniciarSesion($_SESSION["usuarioRegistro"]);
-            $_SESSION["usuarioRegistro"] = null; // Limpiar la variable de sesión para evitar accesos no autorizados
-            header("Location: " . $rutaApp . "inicio/accederInicio");
+            $instanciaModelo = new RegistroModelo();
+            $usuarioValidado = $instanciaModelo->validarUsuario($_SESSION["usuarioRegistro"], $_SESSION["contrasenaRegistro"]);
+
+            if ($usuarioValidado) {
+
+                $instanciaGestorSesion->iniciarSesion($usuarioValidado);
+                $_SESSION["usuarioRegistro"] = null; // Limpiar la variable de sesión para evitar accesos no autorizados
+                $_SESSION["contrasenaRegistro"] = null;
+                header("Location: " . $rutaApp . "inicio/accederInicio");
+
+            }
 
         }
 

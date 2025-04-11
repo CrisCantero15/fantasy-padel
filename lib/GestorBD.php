@@ -70,9 +70,22 @@ class GestorBD {
         $conexion = self::conectarBD();
         $consultaPreparada = self::prepararConsulta($conexion, $consulta, ...$parametros);
         
-        if($consultaPreparada->execute()) {
+        if ($consultaPreparada->execute()) {
 
             return true;
+
+        } else return false;
+
+    }
+
+    public static function consultaActualizacion($consulta, ...$parametros) {
+
+        $conexion = self::conectarBD();
+        $consultaPreparada = self::prepararConsulta($conexion, $consulta, ...$parametros);
+        
+        if ($consultaPreparada->execute()) {
+
+            return $consultaPreparada->affected_rows > 0;
 
         } else return false;
 

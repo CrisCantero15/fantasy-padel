@@ -19,6 +19,8 @@
     <main>
         <p>¡Bienvenido a Fantasy Padel! Estoy en Inicio.</p>
         <p><?php echo $_SESSION["usuario"] ?></p>
+        <p><?php echo $_SESSION["id_usuario"] ?></p>
+        <p><?php if (isset($_SESSION["nombreEquipo"])) echo $_SESSION["nombreEquipo"] ?></p>
     </main>
     <?php include_once "views/inc/footer.php" ?>
 </body>

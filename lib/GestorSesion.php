@@ -11,14 +11,16 @@ class GestorSesion {
         
     }
 
-    public function iniciarSesion($usuario) {
+    public function iniciarSesion($usuarioValidado = []) {
         
         // IMPORTANTE: tener en cuenta crear una sesión que expire cada X tiempo cuando el usuario está inactivo
 
         // session_id(md5('FANTASYPADEL' . uniqid(mt_rand(), true)));
         session_regenerate_id(true); // Regenerar el ID de sesión para evitar ataques de fijación de sesión
-        $_SESSION["id"] = session_id();
-        $_SESSION["usuario"] = $usuario;
+        $_SESSION["id_sesion"] = session_id();
+        $_SESSION["id_usuario"] = $usuarioValidado[0]["id_usuario"];
+        $_SESSION["usuario"] = $usuarioValidado[0]["nombre"];
+        $_SESSION["foto_perfil"] = $usuarioValidado[0]["foto_perfil"];
         $_SESSION["tiempoInicio"] = time();
         $_SESSION["ip"] = $_SERVER["REMOTE_ADDR"]; // Guardar la IP del usuario para mayor seguridad
         $_SESSION["userAgent"] = $_SERVER["HTTP_USER_AGENT"]; // Guardar el user agent del navegador para mayor seguridad

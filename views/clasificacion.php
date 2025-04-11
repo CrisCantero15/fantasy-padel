@@ -7,7 +7,7 @@
     <title>Fantasy Padel - Clasificación</title>
 </head>
 <body>
-    <p>¡Bienvenido a Fantasy Padel!</p>
+    <p>¡Bienvenido a Fantasy Padel! Vista de clasificación</p>
     <!-- Maquetar sección de la clasificación de la liga -->
 </body>
 </html>

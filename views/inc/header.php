@@ -7,26 +7,26 @@
     <div>
         <ul>
             <li class="header-list">
-                <a href="<?php echo $rutaApp ?>/plantilla/accederPlantilla">
+                <a href="<?php echo $rutaApp ?>equipo/accederEquipo">
                     <i class="fa-solid fa-people-group"></i>
-                    <p>PLANTILLA</p>
+                    <p>EQUIPO</p>
                 </a>
             </li>
             <li class="header-list">
-                <a href="<?php echo $rutaApp ?>/mercado/accederMercado">
+                <a href="<?php echo $rutaApp ?>mercado/accederMercado">
                     <i class="fa-solid fa-store"></i>
                     <p>MERCADO</p>
                 </a>
             </li>
             <li class="header-list">
-                <a href="<?php echo $rutaApp ?>/clasificacion/accederClasificacion">
+                <a href="<?php echo $rutaApp ?>clasificacion/accederClasificacion">
                     <i class="fa-solid fa-bars"></i>
                     <p>CLASIFICACIÓN</p>
                 </a>
             </li>
             <li class="header-list">
-                <a href="<?php echo $rutaApp ?>/perfil/accederPerfil">
-                    <img src="../assets/img/perfil_estandar.jpg" alt="Imagen de perfil" style="width: 30px; height: 30px">
+                <a href="<?php echo $rutaApp ?>perfil/accederPerfil">
+                    <img src="../assets/img/profile/<?php echo $_SESSION["foto_perfil"] ?>" alt="Imagen de perfil" style="width: 30px; height: 30px">
                     <p><?php echo strtoupper($_SESSION["usuario"]) ?></p>
                 </a>
             </li>

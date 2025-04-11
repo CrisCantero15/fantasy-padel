@@ -35,7 +35,7 @@ class LoginControlador {
             if ($usuarioValidado) {
                 
                 $instanciaSesion = new GestorSesion();
-                $instanciaSesion->iniciarSesion($usuario);
+                $instanciaSesion->iniciarSesion($usuarioValidado);
                 $enrutador = new Enrutador();
                 $rutaApp = $enrutador->getRutaServidor();
                 

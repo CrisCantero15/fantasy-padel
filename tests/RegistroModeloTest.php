@@ -9,8 +9,8 @@ class RegistroModeloTest extends TestCase
 
         require_once 'models/RegistroModelo.php';
 
-        $nombre = "pepito18";
-        $email = "pepito18@gmail.com";
+        $nombre = "pepito19";
+        $email = "pepito19@gmail.com";
         $contrasena = "12345678";
 
         $registroModelo = new RegistroModelo();
@@ -20,6 +20,7 @@ class RegistroModeloTest extends TestCase
         $this->assertIsBool($resultado); // Se espera que el resultado sea un booleano
        
     }
+
 }
 
 ?>

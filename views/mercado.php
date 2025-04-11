@@ -7,7 +7,7 @@
     <title>Fantasy Padel - Mercado de fichajes</title>
 </head>
 <body>
-    <p>¡Bienvenido a Fantasy Padel!</p>
+    <p>¡Bienvenido a Fantasy Padel! Vista de mercado</p>
     <!-- Maquetar sección de mercado de fichajes -->
 </body>
 </html>

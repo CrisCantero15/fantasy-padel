@@ -25,6 +25,7 @@ class ContactoModeloTest extends TestCase {
         ));
 
     }
+    
 }
 
 ?>
