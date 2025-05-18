@@ -1,3 +1,5 @@
+/* Mejorar el diseño responsive */
+
 * {
     box-sizing: border-box;
 }
@@ -9,4 +11,65 @@ body {
     font-weight: 500;
     margin: 0;
     padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.alert-text-warning {
+    background: #e49aa4;
+    border: 1px solid red;
+    border-radius: 10px;
+    text-align: center;
+    color: red;
+}
+
+section > h1 {
+    text-align: center;
+    margin-bottom: 70px;
+    font-size: 2.25rem;
+}
+
+#mercado {
+    min-height: 100%;
+    width: 100%;
+    background: #bcd5f5;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+.tablaMercado {
+    margin: 0 auto;
+    width: 70%;
+    border-collapse: collapse;
+    /* border-spacing: 0; */
+    text-align: center;
+    /* border: 1px solid black; */
+}
+
+
+.tablaMercado th, .tablaMercado td {
+    padding: 10px;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.tablaMercado td:first-of-type {
+    border-left: 1px solid black;
+}
+
+.tablaMercado td:last-of-type {
+    border-right: 1px solid black;
+}
+
+.tablaMercado th {
+    background-color: #79a7e4;
+}
+
+.tablaMercado td {
+    background-color: #b8c3d1; 
 }

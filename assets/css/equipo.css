@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.alert-text-warning {
+    background: #e49aa4;
+    border: 1px solid red;
+    border-radius: 10px;
+    text-align: center;
+    color: red;
+}
+
+section > h1 {
+    text-align: center;
+    margin-bottom: 70px;
+    font-size: 2.25rem;
+}

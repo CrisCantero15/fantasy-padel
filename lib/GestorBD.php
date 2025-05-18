@@ -44,9 +44,10 @@ class GestorBD {
             }
 
             $consultaPreparada->bind_param($tiposParametros, ...$parametros);
-            return $consultaPreparada;
 
         }
+
+        return $consultaPreparada;
 
     }
 
