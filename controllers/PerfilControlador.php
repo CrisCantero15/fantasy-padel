@@ -11,12 +11,32 @@ class PerfilControlador {
 
     public function accederPerfil() {
 
+        // Comprobar si la sesión ya está iniciada para evitar accesos no autorizados desde la URL
+        if (!isset($_SESSION["usuario"])) {
+
+            $enrutador = new Enrutador();
+            $rutaApp = $enrutador->getRutaServidor();
+            header("Location: " . $rutaApp . "login/accederLogin");
+            exit();
+
+        }
+
         $vista = new Vista();
         $vista->renderizarVista("perfil");
 
     }
 
     public function enviarDatos() {
+
+        // Comprobar si la sesión ya está iniciada para evitar accesos no autorizados desde la URL
+        if (!isset($_SESSION["usuario"])) {
+
+            $enrutador = new Enrutador();
+            $rutaApp = $enrutador->getRutaServidor();
+            header("Location: " . $rutaApp . "login/accederLogin");
+            exit();
+
+        }
 
         // Si existe el campo old-pass, se ejecuta el siguiente código
 

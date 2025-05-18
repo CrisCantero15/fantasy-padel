@@ -1,0 +1,237 @@
+/* Mejorar el diseño responsive */
+/* En responsive, quitar las imágenes de la novedad principal o cambiar a display flex column y ponerla abajo */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.alert-text-warning {
+    background: #e49aa4;
+    border: 1px solid red;
+    border-radius: 10px;
+    text-align: center;
+    color: red;
+}
+
+.modal {
+    display: block;
+    background: rgba(125, 125, 125, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+/* FORMULARIO */
+
+.modal > div {
+    color: #F5F5DC;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    min-height: 30%;
+    background: linear-gradient(to bottom, #3C454D, #8BA0B3);
+    border-radius: 10px;
+    padding: 40px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-modal {
+    margin: 0 auto;
+    margin-bottom: 10px;
+    width: 20vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 1.5rem 1rem;
+    border: 1px solid #dadada;
+    border-radius: 10px;
+    font-family: Arial;
+}
+
+.btn-modal:hover {
+    background: #1e5f8a;
+}
+
+.btn-modal:active {
+    background: #1a4c6e;
+}
+
+section > h1 {
+    text-align: center;
+    margin-bottom: 70px;
+    font-size: 2.25rem;
+}
+
+/* Instrucciones APP */
+
+#instrucciones {
+    width: 100%;
+    background: #bcd5f5;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+#acordeonInfo {
+    min-width: 40vw;
+    max-width: 50vw;
+    margin: 0 auto;
+}
+
+.headAcordeon {
+    display: flex;
+    justify-content: space-between;
+    background-color: #94BAE7;
+    border: 1px solid black;
+    align-items: center;
+    padding: 10px 30px;
+    cursor: pointer;
+}
+
+.contenidoAcordeon {
+    background-color: #d4e6fd;
+    height: 0px;
+    overflow-y: hidden;
+    padding: 0px 30px;
+    transition-property: height;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+    transition-delay: 0s;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.contenidoAcordeon:last-of-type {
+    border-bottom: 1px solid black;
+}
+
+/* Novedades APP */
+
+#novedades {
+    width: 100%;
+    background: #d4e6fd;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+#infoNovedades {
+    margin: 0 auto;
+    max-width: 60vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+
+#infoNovedades > :first-child {
+    grid-column: 1 / 4;
+}
+
+.novedadAppPrincipal, .novedadAppSecundaria {
+    background-color: #94BAE7;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.novedadAppPrincipal {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.novedadAppPrincipal img {
+    margin-right: 20px;
+}
+
+.novedadAppSecundaria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.novedadAppSecundaria h3 {
+    text-align: center;
+}
+
+.imgNovedad > img {
+    /* width: 100%; */
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 10px 0px;
+}
+
+/* Eventos PADEL */
+
+#eventos {
+    width: 100%;
+    background: #bcd5f5;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+#contenidoEventos {
+    margin: 0 auto;
+    max-width: 60vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 40px;
+}
+
+.noticiaPrincipal, .noticiaSecundaria, .proximosEventos {
+    background: #d4e6fd;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.noticiaPrincipal h4, .noticiaSecundaria h4 {
+    color: #e6112d;
+}
+
+.noticiaPrincipal {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+
+.imgNoticia > img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.proximosEventos {
+    grid-column: 1 / 4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}

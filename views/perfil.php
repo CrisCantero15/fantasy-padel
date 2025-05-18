@@ -5,25 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../assets/img/logo.png" type="image/png">
     <title>Mi Perfil - Fantasy Padel</title>
+    <!-- Fuentes de Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <!-- Hoja de estilos CSS -->
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/perfil.css">
+    <!-- Iconos de Font Awesome -->
     <script src="https://kit.fontawesome.com/aaf2ef96dc.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Maquetar sección de perfil del usuario -->
     <?php include_once "views/inc/header.php" ?>
     <main>
+        <!-- Mejorar el CSS de esta sección con un display grid para mostrar de manera responsive el mensaje de validacion/error -->
         <form action="<?php echo $rutaApp ?>perfil/enviarDatos" method="POST" enctype="multipart/form-data">
             <div id="foto-perfil">
                 <h1>Imagen de perfil</h1>
                 <div>
                     <img src="../assets/img/profile/<?php echo $_SESSION["foto_perfil"] ?>" alt="Foto de perfil del usuario">
                 </div>
-                <input type="file" id="image" name="image" accept="image/*" placeholder="Subir imagen de perfil...">
+                <input type="file" id="image" name="image" accept="image/*">
                 <?php if (isset($data["errorValidacion"])) { ?>
                     <div class="alert-text-warning">
                         <p><?php echo $data["errorValidacion"] ?></p>

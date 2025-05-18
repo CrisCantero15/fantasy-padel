@@ -13,7 +13,15 @@ class LoginControlador {
 
     public function accederLogin() {
 
-        // Una vez hecho el botón de cerrar sesión en inicio, comprobar aquí si existe una sesión iniciada para evitar accesos no autorizados desde la URL
+        // Comprobar si la sesión ya está iniciada para evitar accesos no autorizados desde la URL
+        if (isset($_SESSION["usuario"])) {
+
+            $enrutador = new Enrutador();
+            $rutaApp = $enrutador->getRutaServidor();
+            header("Location: " . $rutaApp . "inicio/accederInicio");
+            exit();
+
+        }
 
         $vista = new Vista();
         $vista->renderizarVista("login");
@@ -21,8 +29,16 @@ class LoginControlador {
     }
 
     public function validarLogin() {
-        
-        // Una vez hecho el botón de cerrar sesión en inicio, comprobar aquí si existe una sesión iniciada para evitar accesos no autorizados desde la URL
+
+        // Comprobar si la sesión ya está iniciada para evitar accesos no autorizados desde la URL
+        if (isset($_SESSION["usuario"])) {
+
+            $enrutador = new Enrutador();
+            $rutaApp = $enrutador->getRutaServidor();
+            header("Location: " . $rutaApp . "inicio/accederInicio");
+            exit();
+
+        }
 
         if (isset($_POST["usuario"]) && isset($_POST["contrasena"]) && !empty($_POST["usuario"]) && !empty($_POST["contrasena"])) {
 
@@ -32,13 +48,31 @@ class LoginControlador {
             $instanciaModelo = new LoginModelo();
             $usuarioValidado = $instanciaModelo->validarUsuario($usuario, $contrasena);
 
+            // Comprobar si el usuario y la contraseña son correctos
+            // En caso de que el usuario y la contraseña sean correctos, iniciar sesión
             if ($usuarioValidado) {
                 
                 $instanciaSesion = new GestorSesion();
                 $instanciaSesion->iniciarSesion($usuarioValidado);
+
+                // Comprobar si el usuario tiene un equipo registrado
+                $resultadoComprobacion = $instanciaModelo->validarEquipo($_SESSION["id_usuario"]);
+
+                if ($resultadoComprobacion) {
+
+                    $_SESSION["nombreEquipo"] = $resultadoComprobacion[0]["nombre_equipo"];
+
+                } else {
+
+                    $_SESSION["nombreEquipo"] = null;
+                    
+                }
+
                 $enrutador = new Enrutador();
                 $rutaApp = $enrutador->getRutaServidor();
                 
+                // Comprobar si el usuario es admin o no
+                // En caso de que el usuario sea admin, redirigir a la página de administración
                 if ($usuario === 'admin') {
 
                     header("Location: " . $rutaApp . "admin/accederAdmin");
@@ -57,7 +91,7 @@ class LoginControlador {
 
             }
 
-        } else { 
+        } else {
 
             $data["errorValidacion"] = "Introduzca los datos correctamente";
             $vista = new Vista();

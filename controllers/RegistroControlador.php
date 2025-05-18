@@ -103,8 +103,8 @@ class RegistroControlador {
 
     public function iniciarLogin() {
 
-        // Comprobar si ya existe una sesión iniciada para evitar accesos no autorizados desde la URL
-
+        // Comprobamos si ya existe una sesión iniciada para evitar accesos no autorizados desde la URL
+        
         $instanciaGestorSesion = new GestorSesion();
         $enrutador = new Enrutador();
         $rutaApp = $enrutador->getRutaServidor();

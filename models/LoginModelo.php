@@ -23,6 +23,23 @@ class LoginModelo {
 
     }
 
+    public function validarEquipo($idUsuario) {
+
+        $consulta = "SELECT * FROM `equipos` WHERE `id_usuario` = ?";
+        $resultado = GestorBD::consultaLectura($consulta, $idUsuario);
+
+        if ($resultado) {
+            
+            return $resultado;
+
+        } else {
+
+            return null;
+
+        }
+
+    }
+
 }
 
 ?>
