@@ -17,6 +17,7 @@
     <?php include_once "views/inc/header.php" ?>
     <main>
         <!-- Añadir modal que se abre al comprar un jugador y con dos botones (permanecer en el mercado o ir a equipo) -->
+        <!-- En ese modal tratar el error en caso de que el jugador ya haya sido comprado justo antes por otro usuario -->
         <section id="mercado">
             <h1>Mercado Elite: Tu Ventana a las Mejores Incorporaciones</h1>
             <?php
@@ -30,9 +31,9 @@
                     <thead>
                         <tr>
                             <th><strong>NOMBRE DEL JUGADOR</strong></th>
-                            <th><strong>PUNTUACIÓN</strong></th>
+                            <th><strong>PUNTUACIÓN ACTUAL</strong></th>
                             <th><strong>PRECIO DE MERCADO</strong></th>
-                            <th><strong>ACCIÓN</strong></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>

@@ -26,15 +26,16 @@ body {
 
 main {
     min-height: 68vh; /* Mirar bien esto */
-    width: 75vw;
+    width: 100vw;
     margin: 0 auto;
     border: 1px solid rgba(0, 0, 0, 0); /* Arreglar esto que es un poco trampa */
+    background: #bcd5f5;
 }
 
 form {
     display: flex;
     justify-content: space-evenly;
-    gap: 90px;
+    gap: 50px;
 }
 
 form input, form button {

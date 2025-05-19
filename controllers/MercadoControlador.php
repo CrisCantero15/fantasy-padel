@@ -54,6 +54,7 @@ class MercadoControlador {
         }
 
         // Añadir el jugador a la plantilla del usuario y eliminar el jugador del mercado (campo 'en_equipo' = 1)
+        // Tratar el error en caso de que se intente comprar un jugador que ya no exista en la BBDD (igual otro usuario ya lo ha comprado justo antes)
 
     }
 

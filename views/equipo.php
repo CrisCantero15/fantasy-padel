@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/equipo.css">
-    <script src="../assets/js/index.js"></script>
     <script src="https://kit.fontawesome.com/aaf2ef96dc.js" crossorigin="anonymous"></script>
 </head>
 <body>

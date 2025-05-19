@@ -13,7 +13,7 @@ class MercadoModelo {
         try {
             
             $parametros = 0;
-            $consulta = "SELECT * FROM `jugadores` WHERE `en_equipo` = ?";
+            $consulta = "SELECT * FROM `jugadores` WHERE `en_equipo` = ? ORDER BY `precio` DESC";
             $resultado = GestorBD::consultaLectura($consulta, $parametros);
         
             return $resultado;
