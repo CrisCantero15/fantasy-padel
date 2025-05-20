@@ -19,7 +19,7 @@
         <!-- Añadir modal que se abre al comprar un jugador y con dos botones (permanecer en el mercado o ir a equipo) -->
         <!-- En ese modal tratar el error en caso de que el jugador ya haya sido comprado justo antes por otro usuario -->
         <section id="mercado">
-            <h1>Mercado Elite: Tu Ventana a las Mejores Incorporaciones</h1>
+            <h1>Mercado Élite: Tu ventana a las mejores incorporaciones</h1>
             <?php
                 if (isset($data["errorMercado"])) {
                     echo "<div class='error'><h4>" . $data["errorMercado"] . "</h4></div>";
@@ -41,7 +41,7 @@
                         <tr>
                             <td><?= htmlspecialchars($jugador["nombre_jugador"]) ?></td>
                             <td><?= htmlspecialchars($jugador["puntuacion_jugador"]) ?></td>
-                            <td><?= htmlspecialchars($jugador["precio"]) ?></td>
+                            <td><?= htmlspecialchars($jugador["precio"]) ?>€</td>
                             <td><button type="submit" name="comprar" value="<?= $jugador["id_jugador"] ?>" class="btnCompra"><i class="fas fa-shopping-cart"></i></button></td>
                         </tr>
                     <?php endforeach; } ?>
