@@ -20,6 +20,8 @@
             <h1>¡Este es tu equipo ganador!</h1>
             <div id="contenedorEquipo">
                 <div class="infoEquipo">
+                    <!-- OJO: darle valor CSS a la clase .error -->
+                    <?php if (isset($data["errorJugadores"])) { echo "<p class='error'>" . $data["errorJugadores"] . "</p>"; } else { ?>
                     <h2>
                         <img class="logoEquipo" src="../assets/img/profile/<?php echo $_SESSION["foto_perfil"] ?>" alt="Logo equipo" style="width: 30px; height: 30px">
                         <!-- Añadir color al presupuesto (si es positivo, en verde; si es negativo, en rojo) -->
@@ -32,16 +34,21 @@
                     <h2>Próxima jornada: (...)</h2>
                 </div>
                 <div class="listaJugadores">
-                    <!-- Añadir un foreach con el listado de los jugadores que pertenecen al equipo -->
-                    <h3>Jugador 1 - Puntuación | Valor</h3>
-                    <h3>Jugador 2 - Puntuación | Valor</h3>
-                    <h3>Jugador 3 - Puntuación | Valor</h3>
-                    <h3>Jugador 4 - Puntuación | Valor</h3>
-                    <h3>Jugador 5 - Puntuación | Valor</h3>
-                    <h3>Jugador 6 - Puntuación | Valor</h3>
+                    <!-- Añádir botón de añadir a equipo titular -->
+                    <!-- Añadir una variación de color/estilo a los jugadores seleccionados para titular ('en_titular = true') -->
+                    <?php foreach ($data["jugadoresEquipo"] as $jugador): ?>
+                    <h3>
+                        <?= 
+                            htmlspecialchars($jugador["nombre_jugador"]) . " - " .
+                            htmlspecialchars($jugador["puntuacion_jugador"]) . " | " . 
+                            htmlspecialchars($jugador["precio"]) . "€ | Botón de selección | Botón de venta"
+                        ?>
+                    </h3>
+                    <h3>(+)</h3>
+                    <?php endforeach; ?>
                 </div>
                 <div class="seleccionJugadores">
-                    <!-- Poner botones que te abra un listado con los jugadores y al hacer clic se selecciona -->
+                    <!-- Poner un botón a cada jugador para quitarlo del equipo titular -->
                     <div class="jugadorSeleccionado">Jugador 1</div>
                     <div class="jugadorSeleccionado">Jugador 2</div>
                     <div class="jugadorSeleccionado">Jugador 3</div>
@@ -49,6 +56,7 @@
                 </div>
                 <!-- Añadir mensajes de alertas para informar al usuario de todo (por ejemplo, de que faltan jugadores por seleccionar) -->
             </div>
+            <?php } ?>
         </section>
     </main>
     <?php include_once "views/inc/footer.php" ?>

@@ -43,6 +43,24 @@ class InicioModelo {
 
     }
 
+    public function obtenerEquipo($nombreEquipo) {
+
+        try {
+            
+            $consulta = "SELECT * FROM `equipos` WHERE `nombre_equipo` = ?";
+            $resultado = GestorBD::consultaLectura($consulta, $nombreEquipo);
+
+            return $resultado;
+
+        } catch (PDOException $error) {
+            
+            echo "<script>console.error('Error al obtener el equipo: " . addslashes($error->getMessage()) . "');</script>";
+            return "Error al obtener el equipo. Por favor, inténtalo de nuevo más tarde.";
+
+        }
+
+    }
+
 }
 
 ?>

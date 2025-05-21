@@ -60,6 +60,7 @@ class LoginControlador {
 
                 if ($resultadoComprobacion) {
 
+                    $_SESSION["idEquipo"] = $resultadoComprobacion[0]["id_equipo"];
                     $_SESSION["nombreEquipo"] = $resultadoComprobacion[0]["nombre_equipo"];
                     $_SESSION["presupuestoEquipo"] = $resultadoComprobacion[0]["presupuesto"];
 

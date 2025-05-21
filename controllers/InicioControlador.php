@@ -61,11 +61,14 @@ class InicioControlador {
 
             // Registrar el equipo
             $resultadoRegistro = $instanciaInicio->registrarEquipo($nombreEquipo, $_SESSION["id_usuario"]);
+            $resultadoEquipo = $instanciaInicio->obtenerEquipo($nombreEquipo);
             
             if ($resultadoRegistro) {
 
                 $data["exitoRegistro"] = "Como mánager de " . $nombreEquipo . ", tu primer paso debería ser ir al mercado y empezar a crear tu equipo. ¡Buena suerte!";
-                $_SESSION["nombreEquipo"] = $nombreEquipo;
+                $_SESSION["idEquipo"] = $resultadoEquipo[0]["id_equipo"];
+                $_SESSION["nombreEquipo"] = $resultadoEquipo[0]["nombre_equipo"];
+                $_SESSION["presupuestoEquipo"] = $resultadoEquipo[0]["presupuesto"];
                 $vista = new Vista();
                 $vista->renderizarVista("inicio", $data);
                 exit();
