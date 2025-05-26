@@ -11,52 +11,92 @@
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/equipo.css">
+    <script src="../assets/js/index.js"></script>
     <script src="https://kit.fontawesome.com/aaf2ef96dc.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <?php include_once "views/inc/header.php" ?>
+    <?php if (isset($data["peticionNoAutorizada"])): ?>
+        <script>
+            iniciarAlertaGET("<?= addslashes($data['peticionNoAutorizada']) ?>");
+        </script>
+    <?php endif; ?>
     <main>
+        <!-- Modales -->
+            <!-- Primer modal: ¿seguro que quieres vender este jugador? -->
+        <!-- Sección de equipo -->
         <section id="equipo">
             <h1>¡Este es tu equipo ganador!</h1>
             <div id="contenedorEquipo">
                 <div class="infoEquipo">
-                    <!-- OJO: darle valor CSS a la clase .error -->
-                    <?php if (isset($data["errorJugadores"])) { echo "<p class='error'>" . $data["errorJugadores"] . "</p>"; } else { ?>
                     <h2>
                         <img class="logoEquipo" src="../assets/img/profile/<?php echo $_SESSION["foto_perfil"] ?>" alt="Logo equipo" style="width: 30px; height: 30px">
-                        <!-- Añadir color al presupuesto (si es positivo, en verde; si es negativo, en rojo) -->
+                        <!-- OJO: Añadir color al presupuesto (si es positivo, en verde; si es negativo, en rojo) -->
                         <?= $_SESSION["nombreEquipo"] ?>
                     </h2>
                     <h2>
-                        <?= "Presupuesto actual: " . $_SESSION["presupuestoEquipo"] . "€" ?>
+                        <?= "Presupuesto actual: " . number_format(htmlspecialchars($_SESSION["presupuestoEquipo"])) . "€" ?>
                     </h2>
-                    <!-- Añadir la fecha de la próxima jornada (contador o fecha de cierre de selección de jugadores) -->
+                    <!-- OJO: Añadir la fecha de la próxima jornada (contador o fecha de cierre de selección de jugadores) -->
                     <h2>Próxima jornada: (...)</h2>
                 </div>
+                <?php if (!isset($data["errorJugadores"])): ?>
                 <div class="listaJugadores">
-                    <!-- Añádir botón de añadir a equipo titular -->
-                    <!-- Añadir una variación de color/estilo a los jugadores seleccionados para titular ('en_titular = true') -->
-                    <?php foreach ($data["jugadoresEquipo"] as $jugador): ?>
-                    <h3>
-                        <?= 
+                    <!-- OJO: Añadir una variación de color/estilo a los jugadores seleccionados para titular ('en_titular = true') -->
+                    <?php if (isset($data["jugadoresEquipo"])): ?>
+                        <?php foreach ($data["jugadoresEquipo"] as $jugador): ?>
+                    <h3 class="<?= $jugador['en_titular'] ? 'jugadorTitular' : '' ?>">
+                        <?=
                             htmlspecialchars($jugador["nombre_jugador"]) . " - " .
-                            htmlspecialchars($jugador["puntuacion_jugador"]) . " | " . 
-                            htmlspecialchars($jugador["precio"]) . "€ | Botón de selección | Botón de venta"
+                            htmlspecialchars($jugador["puntuacion_jugador"]) . " | " .
+                            number_format(htmlspecialchars($jugador["precio"])) . "€ | "
                         ?>
+                        <?php if ($jugador["en_titular"] == true): ?>
+                             <button class="boton" onclick="window.location.href='<?= $rutaApp ?>equipo/quitarJugador?id=<?= $jugador['id_jugador'] ?>'">Banquillazo</button>
+                        <?php else: ?>
+                            <button class="boton" onclick="window.location.href='<?= $rutaApp ?>equipo/seleccionarJugador?id=<?= $jugador['id_jugador'] ?>'">Titular</button>
+                        <?php endif; ?>
+                        <button class="boton" onclick="window.location.href='<?= $rutaApp ?>equipo/venderJugador?id=<?= $jugador['id_jugador'] ?>'">Vender</button>
                     </h3>
-                    <h3>(+)</h3>
-                    <?php endforeach; ?>
+                    <?php 
+                        endforeach;
+                    else:
+                    ?>
+                    <!-- Mensaje por si no hay jugadores en el equipo -->
+                    <h3>No existen jugadores en el equipo, ¡igual deberías ir al mercado!</h3>
+                    <?php endif; ?>
+                    <!-- Error para cuando no se puede seleccionar nuevos jugadores titulares -->
+                    <?php if (isset($data["errorTitular"])): ?>
+                    <div class="alert-text-warning">
+                        <p><?php echo $data["errorTitular"] ?></p>
+                    </div>
+                        <?php endif; ?>
                 </div>
                 <div class="seleccionJugadores">
-                    <!-- Poner un botón a cada jugador para quitarlo del equipo titular -->
-                    <div class="jugadorSeleccionado">Jugador 1</div>
-                    <div class="jugadorSeleccionado">Jugador 2</div>
-                    <div class="jugadorSeleccionado">Jugador 3</div>
-                    <div class="jugadorSeleccionado">Jugador 4</div>
+                    <!-- OJO: Añadir una variación de color/estilo a los jugadores seleccionados para titular ('en_titular = true') -->
+                    <?php                    
+                        $contadorTitulares = 0;
+                        if (isset($data["jugadoresEquipo"])):
+                            foreach ($data["jugadoresEquipo"] as $jugador):
+                                if ($jugador["en_titular"] == true):
+                                    echo "<div class='jugadorSeleccionado'><p>" . htmlspecialchars($jugador["nombre_jugador"]) . "</p></div>";
+                                    $contadorTitulares++;
+                                endif;
+                            endforeach;
+                        endif;
+                        while($contadorTitulares < 4):
+                            echo "<div class='jugadorSeleccionado' style='color: black;'><p>Jugador no seleccionado</p></div>";
+                            $contadorTitulares++;
+                        endwhile;
+                    ?>
                 </div>
-                <!-- Añadir mensajes de alertas para informar al usuario de todo (por ejemplo, de que faltan jugadores por seleccionar) -->
             </div>
-            <?php } ?>
+            <!-- Error para cuando no existen jugadores en el equipo o existe algún fallo en su búsqueda en la BBDD -->
+            <?php else: ?>
+            <div class="alert-text-warning">
+                <p><?php echo $data["errorJugadores"] ?></p>
+            </div>
+            <?php endif; ?>
         </section>
     </main>
     <?php include_once "views/inc/footer.php" ?>

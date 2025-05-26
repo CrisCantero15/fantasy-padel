@@ -44,3 +44,11 @@ const startAcordeon = () => {
     }
     
 }
+
+// Alerta de GET no autorizado
+
+const iniciarAlertaGET = (mensaje) => {
+
+    alert(`GET no autorizado: ${mensaje}`);
+
+}

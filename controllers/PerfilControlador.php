@@ -11,12 +11,21 @@ class PerfilControlador {
 
     public function accederPerfil() {
 
+        $enrutador = new Enrutador();
+        $rutaApp = $enrutador->getRutaServidor();
+
         // Comprobar si la sesión ya está iniciada para evitar accesos no autorizados desde la URL
         if (!isset($_SESSION["usuario"])) {
 
-            $enrutador = new Enrutador();
-            $rutaApp = $enrutador->getRutaServidor();
             header("Location: " . $rutaApp . "login/accederLogin");
+            exit();
+
+        }
+
+        // Comprobar si el usuario es administrador para evitar accesos no autorizados desde la URL
+        if ($_SESSION["usuario"] === "admin") {
+
+            header("Location: " . $rutaApp . "admin/accederAdmin");
             exit();
 
         }
@@ -28,12 +37,21 @@ class PerfilControlador {
 
     public function enviarDatos() {
 
+        $enrutador = new Enrutador();
+        $rutaApp = $enrutador->getRutaServidor();
+
         // Comprobar si la sesión ya está iniciada para evitar accesos no autorizados desde la URL
         if (!isset($_SESSION["usuario"])) {
 
-            $enrutador = new Enrutador();
-            $rutaApp = $enrutador->getRutaServidor();
             header("Location: " . $rutaApp . "login/accederLogin");
+            exit();
+
+        }
+
+        // Comprobar si el usuario es administrador para evitar accesos no autorizados desde la URL
+        if ($_SESSION["usuario"] === "admin") {
+
+            header("Location: " . $rutaApp . "admin/accederAdmin");
             exit();
 
         }

@@ -14,17 +14,21 @@ class InicioControlador {
     public function accederInicio() {
 
         $instanciaSesion = new GestorSesion();
+        $enrutador = new Enrutador();
+
+        $rutaApp = $enrutador->getRutaServidor();
         
         if (!$instanciaSesion->comprobarSesion()){
 
-            $enrutador = new Enrutador();
-            $rutaApp = $enrutador->getRutaServidor();
             header("Location: " . $rutaApp . "login/accederLogin");
             exit();
 
-        }
+        } else if ($_SESSION["usuario"] === "admin") {
         
-        else {
+            header("Location: " . $rutaApp . "admin/accederAdmin");
+            exit();
+
+        } else {
             
             $vista = new Vista();
             $vista->renderizarVista("inicio");
@@ -42,53 +46,71 @@ class InicioControlador {
 
     public function registrarEquipo() {
 
-        if (isset($_POST["nombreEquipo"])) {
+        $instanciaSesion = new GestorSesion();
+        $enrutador = new Enrutador();
 
-            $nombreEquipo = $_POST["nombreEquipo"];
-            $instanciaInicio = new InicioModelo();
+        $rutaApp = $enrutador->getRutaServidor();
+        
+        if (!$instanciaSesion->comprobarSesion()){
 
-            // Comprobar si el nombre del equipo ya existe
-            $resultadoComprobacion = $instanciaInicio->comprobarEquipo($nombreEquipo);
+            header("Location: " . $rutaApp . "login/accederLogin");
+            exit();
 
-            if ($resultadoComprobacion !== true) {
+        } else if ($_SESSION["usuario"] === "admin") {
+        
+            header("Location: " . $rutaApp . "admin/accederAdmin");
+            exit();
 
-                $data["errorValidacion"] = "El nombre del equipo ya existe. Por favor, elige otro nombre";
-                $vista = new Vista();
-                $vista->renderizarVista("inicio", $data);
-                exit();
-
-            }
-
-            // Registrar el equipo
-            $resultadoRegistro = $instanciaInicio->registrarEquipo($nombreEquipo, $_SESSION["id_usuario"]);
-            $resultadoEquipo = $instanciaInicio->obtenerEquipo($nombreEquipo);
+        } else {
             
-            if ($resultadoRegistro) {
+            if (isset($_POST["nombreEquipo"])) {
 
-                $data["exitoRegistro"] = "Como mánager de " . $nombreEquipo . ", tu primer paso debería ser ir al mercado y empezar a crear tu equipo. ¡Buena suerte!";
-                $_SESSION["idEquipo"] = $resultadoEquipo[0]["id_equipo"];
-                $_SESSION["nombreEquipo"] = $resultadoEquipo[0]["nombre_equipo"];
-                $_SESSION["presupuestoEquipo"] = $resultadoEquipo[0]["presupuesto"];
-                $vista = new Vista();
-                $vista->renderizarVista("inicio", $data);
-                exit();
+                $nombreEquipo = $_POST["nombreEquipo"];
+                $instanciaInicio = new InicioModelo();
+
+                // Comprobar si el nombre del equipo ya existe
+                $resultadoComprobacion = $instanciaInicio->comprobarEquipo($nombreEquipo);
+
+                if ($resultadoComprobacion !== true) {
+
+                    $data["errorValidacion"] = "El nombre del equipo ya existe. Por favor, elige otro nombre";
+                    $vista = new Vista();
+                    $vista->renderizarVista("inicio", $data);
+                    exit();
+
+                }
+
+                // Registrar el equipo
+                $resultadoRegistro = $instanciaInicio->registrarEquipo($nombreEquipo, $_SESSION["id_usuario"]);
+                $resultadoEquipo = $instanciaInicio->obtenerEquipo($nombreEquipo);
+                
+                if ($resultadoRegistro) {
+
+                    $data["exitoRegistro"] = "Como mánager de " . $nombreEquipo . ", tu primer paso debería ser ir al mercado y empezar a crear tu equipo. ¡Buena suerte!";
+                    $_SESSION["idEquipo"] = $resultadoEquipo[0]["id_equipo"];
+                    $_SESSION["nombreEquipo"] = $resultadoEquipo[0]["nombre_equipo"];
+                    $_SESSION["presupuestoEquipo"] = $resultadoEquipo[0]["presupuesto"];
+                    $vista = new Vista();
+                    $vista->renderizarVista("inicio", $data);
+                    exit();
+
+                } else {
+
+                    $data["errorValidacion"] = "Error al registrar el equipo. Por favor, inténtalo de nuevo más tarde";
+                    $vista = new Vista();
+                    $vista->renderizarVista("inicio", $data);
+                    exit();
+
+                }
 
             } else {
 
-                $data["errorValidacion"] = "Error al registrar el equipo. Por favor, inténtalo de nuevo más tarde";
+                $data["errorValidacion"] = "El nombre del equipo no puede estar vacío";
                 $vista = new Vista();
                 $vista->renderizarVista("inicio", $data);
                 exit();
 
             }
-
-
-        } else {
-
-            $data["errorValidacion"] = "El nombre del equipo no puede estar vacío";
-            $vista = new Vista();
-            $vista->renderizarVista("inicio", $data);
-            exit();
 
         }
 

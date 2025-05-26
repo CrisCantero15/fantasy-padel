@@ -92,6 +92,24 @@ class GestorBD {
 
     }
 
+    public static function iniciarTransaccion() {
+
+        return self::conectarBD()->begin_transaction();
+
+    }
+
+    public static function confirmarTransaccion() {
+
+        return self::conectarBD()->commit();
+
+    }
+
+    public static function cancelarTransaccion() {
+
+        return self::conectarBD()->rollback();
+
+    }
+
     public static function desconectarBD() {
         
         if (self::$conexion) {

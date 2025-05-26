@@ -12,11 +12,19 @@ Class AdminControlador {
     public function accederAdmin(){
 
         $instanciaSesion = new GestorSesion();
+        $vista = new Vista();
+        $enrutador = new Enrutador();
 
-        if ($instanciaSesion->comprobarSesion()){
+        $rutaApp = $enrutador->getRutaServidor();
 
-            $vista = new Vista();
+        if ($instanciaSesion->comprobarSesion() && $_SESSION["usuario"] === "admin") {
+
             $vista->renderizarVista("admin");
+
+        } else {
+
+            header("Location: " . $rutaApp . "inicio/accederInicio");
+            exit();
 
         }
 

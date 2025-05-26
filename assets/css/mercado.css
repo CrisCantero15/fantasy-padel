@@ -28,10 +28,67 @@ main {
     color: red;
 }
 
+#modal {
+    display: block;
+    background: rgba(125, 125, 125, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+#modal > div {
+    color: #F5F5DC;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    min-height: 30%;
+    background: linear-gradient(to bottom, #3C454D, #8BA0B3);
+    border-radius: 10px;
+    padding: 40px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btnModal {
+    margin: 0 auto;
+    margin-bottom: 10px;
+    width: 20vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 1.5rem 1rem;
+    border: 1px solid #dadada;
+    border-radius: 10px;
+    font-family: Arial;
+}
+
+.btnModal:hover {
+    background: #1e5f8a;
+}
+
+.btnModal:active {
+    background: #1a4c6e;
+}
+
 section > h1 {
     text-align: center;
-    margin-bottom: 70px;
     font-size: 2.25rem;
+}
+
+section > h3 {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 #mercado {

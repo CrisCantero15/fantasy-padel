@@ -13,12 +13,11 @@ class RegistroControlador {
 
     public function accederRegistro() {
 
-        // Comprobamos si ya existe una sesión iniciada para evitar accesos no autorizados desde la URL
-
         $instanciaGestorSesion = new GestorSesion();
-        
-        if ($instanciaGestorSesion->comprobarSesion()) {
 
+        // Comprobamos si ya existe una sesión iniciada para evitar accesos no autorizados desde la URL   
+        if ($instanciaGestorSesion->comprobarSesion()) {
+            
             $enrutador = new Enrutador();
             $rutaApp = $enrutador->getRutaServidor();
             header("Location: " . $rutaApp . "inicio/accederInicio");
@@ -26,7 +25,6 @@ class RegistroControlador {
         }
 
         // Renderizamos la vista de registro
-
         $vista = new Vista();
         $vista->renderizarVista("registro");
 
@@ -34,10 +32,9 @@ class RegistroControlador {
 
     public function validarRegistro() {
 
-        // Comprobamos si ya existe una sesión iniciada para evitar accesos no autorizados desde la URL
-
         $instanciaGestorSesion = new GestorSesion();
         
+        // Comprobamos si ya existe una sesión iniciada para evitar accesos no autorizados desde la URL
         if ($instanciaGestorSesion->comprobarSesion()) {
 
             $enrutador = new Enrutador();
