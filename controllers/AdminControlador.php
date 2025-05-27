@@ -1,6 +1,7 @@
 <?php
 
 require_once "./lib/GestorSesion.php";
+require_once("models/AdminModelo.php");
 require_once("views/Vista.php");
 
 Class AdminControlador {
@@ -19,7 +20,20 @@ Class AdminControlador {
 
         if ($instanciaSesion->comprobarSesion() && $_SESSION["usuario"] === "admin") {
 
-            $vista->renderizarVista("admin");
+            $instanciaAdminModelo = new AdminModelo();
+
+            // Obtener los datos de los equipos de la BBDD
+            $equipos = $instanciaAdminModelo->obtenerEquipos();
+            // Obtener los datos de los jugadores de la BBDD
+            $jugadores = $instanciaAdminModelo->obtenerJugadores();
+
+            if ($equipos && $jugadores) {
+
+                $data["equipos"] = $equipos;
+                $data["jugadores"] = $jugadores;
+                $vista->renderizarVista("admin", $data);
+
+            }
 
         } else {
 

@@ -85,7 +85,7 @@
                             endforeach;
                         endif;
                         while($contadorTitulares < 4):
-                            echo "<div class='jugadorSeleccionado' style='color: black;'><p>Jugador no seleccionado</p></div>";
+                            echo "<div class='jugadorSeleccionado' style='color: black;'><p></p></div>";
                             $contadorTitulares++;
                         endwhile;
                     ?>

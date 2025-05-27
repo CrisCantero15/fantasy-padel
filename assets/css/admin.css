@@ -1,0 +1,169 @@
+* Mejorar el diseño responsive */
+/* En responsive, quitar las imágenes de la novedad principal o cambiar a display flex column y ponerla abajo */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header - HACER RESPONSIVE */
+
+header {
+    background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);
+    display: flex;
+    min-height: 20vh;
+    padding: 0 8vw;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.logoHeader img {
+    max-width: 5vw;
+    min-width: 100px;
+}
+
+.textHeader {
+    max-width: 30%;
+    text-align: center;
+}
+
+.textHeader h3 {
+    color: #F5F5DC;
+    font-size: 1.5rem;
+    font-weight: 1000;
+    text-shadow: 0 2px 5px black;
+}
+
+.btnHeader button {
+    background-color: #1A2C36;
+    color: #F5F5DC;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: 'Playfair Display', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.alert-text-warning {
+    background: #e49aa4;
+    border: 1px solid red;
+    border-radius: 10px;
+    text-align: center;
+    color: red;
+}
+
+section > h1 {
+    text-align: center;
+    margin-bottom: 70px;
+    font-size: 2.25rem;
+}
+
+#adminPanel {
+    min-height: 100vh;
+    width: 100%;
+    background: #bcd5f5;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+#panel {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.panelPestanas {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.tituloPestana {
+    color: #F5F5DC;
+    font-size: 1.25rem;
+    font-weight: 1000;
+    text-shadow: 0 2px 10px black;
+    cursor: pointer;
+}
+
+.tituloPestana:first-of-type {
+    color: #1bc2a4;
+}
+
+.panelTexto {
+    display: none;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.panelTexto:first-of-type {
+    display: block;
+}
+
+/* Comienzo Tabla Equipos */
+
+.tablaClasificacion {
+  margin: 0 auto;
+  width: 70%;
+  border-collapse: collapse;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Encabezados de la tabla */
+.tablaClasificacion th {
+  background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);
+  color: #F5F5DC;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 12px 16px;
+  border-top: 1px solid #000;
+  border-bottom: 2px solid #000;
+  text-shadow: 0 2px 10px black;
+}
+
+/* Celdas de contenido */
+.tablaClasificacion td {
+  background-color: #b8c3d1;
+  font-size: 1.15rem;
+  padding: 12px 16px;
+  vertical-align: middle;
+  border-bottom: 1px solid #000;
+}
+
+/* Bordes izquierdo y derecho */
+.tablaClasificacion th:first-child,
+.tablaClasificacion td:first-child {
+  border-left: 1px solid black;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.tablaClasificacion th:last-child,
+.tablaClasificacion td:last-child {
+  border-right: 1px solid black;
+}

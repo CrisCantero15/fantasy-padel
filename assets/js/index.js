@@ -52,3 +52,42 @@ const iniciarAlertaGET = (mensaje) => {
     alert(`GET no autorizado: ${mensaje}`);
 
 }
+
+// Funcionalidad: Pestañas de contenido
+
+const activarPestanas = () => {
+
+    document.querySelectorAll('.tituloPestana').forEach(tab => {
+
+        // Evento click en cada h3 que actúa como pestaña
+        tab.addEventListener('click', () => {
+            iniciarPestanas(tab.id, tab.dataset.contenido);
+        });
+
+    });
+
+}
+
+const iniciarPestanas = (pestanaActiva, contenidoActivo) => {
+
+    // Se limpia el color de todas las pestañas
+    const pestanas = Array.from(document.getElementsByClassName('tituloPestana'));
+    pestanas.forEach(pestana => {
+        pestana.style.color = '#F5F5DC'; // Color por defecto
+    });
+
+    // Se limpian todos los contenidos para que estén ocultos
+    const contenidos = Array.from(document.getElementsByClassName('panelTexto'));
+    contenidos.forEach(contenido => {
+        contenido.style.display = 'none'; // Ocultar todos los contenidos
+    });
+
+    // Se activa la pestaña seleccionada
+    const pestanaSeleccionada = document.getElementById(pestanaActiva);
+    pestanaSeleccionada.style.color = '#1bc2a4'; // Color de la pestaña seleccionada
+
+    // Se muestra el contenido correspondiente a la pestaña seleccionada
+    const contenidoSeleccionado = document.getElementById(contenidoActivo);
+    contenidoSeleccionado.style.display = 'block'; // Se muestra el contenido seleccionado
+
+}
