@@ -47,7 +47,7 @@
             </div>
         <?php } ?>
         <section id="instrucciones">
-            <h1>Tu aventura en el pádel comienza aquí, ¡empieza a jugar y ganar!</h1>
+            <h1>TU AVENTURA EN EL PÁDEL COMIENZA AQUÍ, ¡EMPIEZA A JUGAR Y GANAR!</h1>
             <div id="acordeonInfo">
                 <div class="pestanaAcordeon">
                     <div class="headAcordeon">
@@ -71,6 +71,7 @@
                     <div class="contenidoAcordeon">
                         <p>En <strong>Padel Fantasy</strong> puedes comprar y vender jugadores para formar tu equipo ideal, siempre respetando el presupuesto inicial disponible. Cada jugador tiene un valor fijo, y al venderlo, recuperas exactamente la misma cantidad por la que lo adquiriste.</p>
                         <p>Esto te permite modificar tu equipo libremente entre jornadas, sin pérdidas económicas. La estrategia está en elegir bien a quién fichar en cada momento, según su estado de forma y próximos enfrentamientos.</p>
+                        <p>⚠️ <strong>Importante:</strong> una vez iniciada una jornada, no podrás vender a los jugadores que tengas como titulares. Asegúrate de hacer tus ajustes antes de que comience.</p>
                     </div>
                 </div>
                 <div class="pestanaAcordeon">
@@ -115,7 +116,7 @@
             </div>
         </section>
         <section id="novedades">
-            <h1>Lo último en tu cancha</h1>
+            <h1>LO ÚLTIMO EN TU CANCHA</h1>
             <div id="infoNovedades">
                 <div class="novedadAppPrincipal">
                     <div class="infoNovedad">
@@ -153,7 +154,7 @@
             </div>
         </section>
         <section id="eventos">
-            <h1>En la Red: El noticiero del Pádel</h1>
+            <h1>EN LA RED: EL NOTICIERO DEL PÁDEL</h1>
             <div id="contenidoEventos">
                 <div class="noticiaPrincipal">
                     <div class="imgNoticia">

@@ -23,7 +23,7 @@
         <!-- Mejorar el CSS de esta sección con un display grid para mostrar de manera responsive el mensaje de validacion/error -->
         <form action="<?php echo $rutaApp ?>perfil/enviarDatos" method="POST" enctype="multipart/form-data">
             <div id="foto-perfil">
-                <h1>Imagen de perfil</h1>
+                <h1>IMAGEN DE PERFIL</h1>
                 <div>
                     <img src="../assets/img/profile/<?php echo $_SESSION["foto_perfil"] ?>" alt="Foto de perfil del usuario">
                 </div>
@@ -40,7 +40,7 @@
                 <?php } ?>
             </div>
             <div id="datos-personales">
-                <h1>Datos personales</h1>
+                <h1>DATOS PERSONALES</h1>
                 <div id="datos-principales">
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre de usuario nuevo">
                     <input type="email" id="email" name="email" placeholder="Email nuevo">
@@ -52,7 +52,7 @@
                     <input type="password" id="old-pass" name="old-pass" placeholder="Contraseña">
                 </div>
                 <div id="boton-save">
-                    <button type="submit">Guardar cambios</button>
+                    <button type="submit">GUARDAR</button>
                 </div>
             </div>
         </form>

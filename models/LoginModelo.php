@@ -40,6 +40,19 @@ class LoginModelo {
 
     }
 
+    public function obtenerConfiguracion() {
+
+        $consulta = "
+            SELECT DATE_FORMAT(`fecha_jornada`, '%e de %M de %Y a las %H:%i') AS `fecha_jornada`, `modif_titulares`
+            FROM `configuracion`
+            WHERE `id` = 1
+        ";
+        $resultado = GestorBD::consultaLectura($consulta);
+
+        return $resultado;
+
+    }
+
 }
 
 ?>

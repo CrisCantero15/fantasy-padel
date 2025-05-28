@@ -21,7 +21,7 @@
         <section>
             <div class="form-contact">         
                 <div class="text-form">
-                    <h1>Contacto</h1>
+                    <h1>CONTACTO</h1>
                     <h2>Si tienes alguna incidencia o sugerencia, por favor, escríbenos</h2>
                 </div>
                 <form action="<?php echo $rutaApp ?>contacto/establecerContacto" method="POST">
@@ -45,11 +45,10 @@
                         <p><?php echo $data["exitoEnvio"] ?></p>
                     </div>
                     <?php } ?>
-                    <button type="submit">Enviar</button>
+                    <button type="submit">ENVIAR</button>
                 </form>
             </div>
         </section>
     </main>
-    <!-- Añadir el footer aquí -->
 </body>
 </html>

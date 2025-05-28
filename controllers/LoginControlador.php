@@ -53,7 +53,9 @@ class LoginControlador {
             if ($usuarioValidado) {
                 
                 $instanciaSesion = new GestorSesion();
-                $instanciaSesion->iniciarSesion($usuarioValidado);
+                // Obtener la configuración de la aplicación
+                $configuracion = $instanciaModelo->obtenerConfiguracion();
+                $instanciaSesion->iniciarSesion($usuarioValidado, $configuracion);
 
                 // Comprobar si el usuario tiene un equipo registrado
                 $resultadoComprobacion = $instanciaModelo->validarEquipo($_SESSION["id_usuario"]);

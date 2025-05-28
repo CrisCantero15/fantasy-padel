@@ -11,7 +11,7 @@ class GestorSesion {
         
     }
 
-    public function iniciarSesion($usuarioValidado = []) {
+    public function iniciarSesion($usuarioValidado = [], $configuracion = []) {
         
         // IMPORTANTE: tener en cuenta crear una sesión que expire cada X tiempo cuando el usuario está inactivo
 
@@ -21,6 +21,8 @@ class GestorSesion {
         $_SESSION["id_usuario"] = $usuarioValidado[0]["id_usuario"];
         $_SESSION["usuario"] = $usuarioValidado[0]["nombre"];
         $_SESSION["foto_perfil"] = $usuarioValidado[0]["foto_perfil"];
+        $_SESSION["fechaProximaJornada"] = $configuracion[0]["fecha_jornada"];
+        $_SESSION["modificarTitulares"] = $configuracion[0]["modif_titulares"];
         $_SESSION["tiempoInicio"] = time();
         $_SESSION["ip"] = $_SERVER["REMOTE_ADDR"]; // Guardar la IP del usuario para mayor seguridad
         $_SESSION["userAgent"] = $_SERVER["HTTP_USER_AGENT"]; // Guardar el user agent del navegador para mayor seguridad

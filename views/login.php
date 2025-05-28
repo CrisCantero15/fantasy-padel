@@ -21,7 +21,7 @@
             <div class="form-container">             
                 <div class="text-form">
                     <p>Empieza tu aventura</p>
-                    <h1>Inicia sesión en Padel Fantasy</h1>
+                    <h1>INICIA SESIÓN EN PADEL FANTASY</h1>
                 </div>
                 <form action="<?php echo $rutaApp ?>login/validarLogin" method="POST">
                     <input type="text" id="usuario" name="usuario" placeholder="Nombre de usuario" autocomplete="username">
@@ -31,7 +31,7 @@
                         <p><?php echo $data["errorValidacion"] ?></p>
                     </div>
                     <?php } ?>
-                    <button type="submit">Iniciar sesión</button>
+                    <button type="submit">INICIAR SESIÓN</button>
                     <div class="text-form">
                     <p>¿No tienes una cuenta? <a href="<?php echo $rutaApp ?>registro/accederRegistro" >Regístrate</a></p>
                     <p>¿Tienes algún problema al iniciar sesión? <a href="<?php echo $rutaApp ?>contacto/accederContacto" >Contáctanos</a></p>

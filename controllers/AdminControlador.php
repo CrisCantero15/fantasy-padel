@@ -83,7 +83,7 @@ Class AdminControlador {
                 
                 if (isset($_POST["nombreJugador"]) && isset($_POST["precioJugador"])) {
 
-                    $nombreJugador = trim($_POST["nombreJugador"]);
+                    $nombreJugador = trim(string: preg_replace('/\s+/', ' ', ucwords(strtolower($_POST["nombreJugador"]))));
                     $precioJugador = intval(trim($_POST["precioJugador"]));
 
                     if (!empty($nombreJugador) && $precioJugador > 0) {

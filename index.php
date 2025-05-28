@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-setlocale(LC_TIME, 'es_ES.UTF-8');
 
 // Punto de partida de la App (IMPORTANTE incluir Configuracion.php que incluye las variables de configuración utilzadas en la App)
 // Manejamos las diferentes rutas de acceso a la App

@@ -16,7 +16,6 @@
 <body>
     <?php include_once "views/inc/header.php" ?>
     <main>
-        <!-- Añadir modal que se abre al comprar un jugador y con dos botones (permanecer en el mercado o ir a equipo) -->
         <?php if (isset($data["mensajeModal"])): ?>
         <section id="modal">
             <div>
@@ -31,9 +30,8 @@
         </script>
         <?php endif; ?>
         <section id="mercado">
-            <h1>Mercado Élite: Tu ventana a las mejores incorporaciones</h1>
-            <h3>¡Tienes <span style="color:brown; font-weight: bold;"><?= number_format(htmlspecialchars($_SESSION["presupuestoEquipo"])) ?>€</span> listos para fichar a tus próximas estrellas!</h3>
-            <!-- Falta por terminar de implementar la compra del jugador - Sería añadir el jugador en la plantilla del usuario y eliminarlo de la tabla 'mercado' -->
+            <h1>MERCADO ÉLITE: TU VENTANA A LAS MEJORES INCORPORACIONES</h1>
+            <h3>¡Tienes <span style="color: <?= $_SESSION["presupuestoEquipo"] > 0 ? 'green' : '#c2391b' ?>; font-weight: bold;"><?= number_format(htmlspecialchars($_SESSION["presupuestoEquipo"])) ?>€</span> listos para fichar a tus próximas estrellas!</h3>
                 <table class="tablaMercado">
                     <thead>
                         <tr>

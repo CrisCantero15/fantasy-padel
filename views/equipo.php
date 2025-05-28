@@ -26,23 +26,31 @@
             <!-- Primer modal: ¿seguro que quieres vender este jugador? -->
         <!-- Sección de equipo -->
         <section id="equipo">
-            <h1>¡Este es tu equipo ganador!</h1>
+            <h1>¡ESTE ES TU EQUIPO GANADOR!</h1>
             <div id="contenedorEquipo">
                 <div class="infoEquipo">
                     <h2>
                         <img class="logoEquipo" src="../assets/img/profile/<?php echo $_SESSION["foto_perfil"] ?>" alt="Logo equipo" style="width: 30px; height: 30px">
-                        <!-- OJO: Añadir color al presupuesto (si es positivo, en verde; si es negativo, en rojo) -->
-                        <?= $_SESSION["nombreEquipo"] ?>
+                        <span class="mensajeImportante"><?= $_SESSION["nombreEquipo"] ?></span>
                     </h2>
                     <h2>
-                        <?= "Presupuesto actual: " . number_format(htmlspecialchars($_SESSION["presupuestoEquipo"])) . "€" ?>
+                        Presupuesto actual: 
+                        <span style="color: <?= $_SESSION["presupuestoEquipo"] > 0 ? 'green' : '#c2391b' ?>;">
+                            <?= number_format(htmlspecialchars($_SESSION["presupuestoEquipo"])) ?>€
+                        </span>
                     </h2>
-                    <!-- OJO: Añadir la fecha de la próxima jornada (contador o fecha de cierre de selección de jugadores) -->
-                    <h2>Próxima jornada: (...)</h2>
+                    <h2>
+                        Próxima jornada: <span class="mensajeImportante"><?= htmlspecialchars($_SESSION["fechaProximaJornada"]) ?></span>
+                    </h2>
+                    <h2>
+                        Modificación de titulares: 
+                        <span>
+                            <?php echo $_SESSION["modificarTitulares"] ? "✅" : "❌"; ?>
+                        </span>
+                    </h2>
                 </div>
                 <?php if (!isset($data["errorJugadores"])): ?>
                 <div class="listaJugadores">
-                    <!-- OJO: Añadir una variación de color/estilo a los jugadores seleccionados para titular ('en_titular = true') -->
                     <?php if (isset($data["jugadoresEquipo"])): ?>
                         <?php foreach ($data["jugadoresEquipo"] as $jugador): ?>
                     <h3 class="<?= $jugador['en_titular'] ? 'jugadorTitular' : '' ?>">
@@ -73,13 +81,12 @@
                     <?php endif; ?>
                 </div>
                 <div class="seleccionJugadores">
-                    <!-- OJO: Añadir una variación de color/estilo a los jugadores seleccionados para titular ('en_titular = true') -->
                     <?php                    
                         $contadorTitulares = 0;
                         if (isset($data["jugadoresEquipo"])):
                             foreach ($data["jugadoresEquipo"] as $jugador):
                                 if ($jugador["en_titular"] == true):
-                                    echo "<div class='jugadorSeleccionado'><p>" . htmlspecialchars($jugador["nombre_jugador"]) . "</p></div>";
+                                    echo "<div class='jugadorSeleccionado mensajeImportante'><p>" . htmlspecialchars($jugador["nombre_jugador"]) . "</p></div>";
                                     $contadorTitulares++;
                                 endif;
                             endforeach;

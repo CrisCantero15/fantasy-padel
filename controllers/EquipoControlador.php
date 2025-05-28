@@ -34,8 +34,22 @@ class EquipoControlador {
         $idEquipo = $_SESSION["idEquipo"];
         $instanciaEquipoModelo = new EquipoModelo();
         $jugadores = $instanciaEquipoModelo->obtenerJugadores($idEquipo);
+        // Actualizar la fecha de la próxima jornada y configurarla como variable de sesión
+        $configuracion = $instanciaEquipoModelo->obtenerConfiguracion();
+        
+        if (is_array($configuracion) && $configuracion) {
+            
+            // Si la configuración es un array, se asigna la fecha de la próxima jornada a la variable de sesión
+            $_SESSION["fechaProximaJornada"] = $configuracion[0]["fecha_jornada"];
+            $_SESSION["modificarTitulares"] = $configuracion[0]["modif_titulares"];
 
-        if (is_array($jugadores)) {
+        } else {
+
+            $_SESSION["fechaProximaJornada"] = $configuracion;
+
+        }
+
+        if (is_array($jugadores) && is_array($configuracion)) {
 
             $data["jugadoresEquipo"] = $jugadores;
             $vista = new Vista();
@@ -100,8 +114,29 @@ class EquipoControlador {
         }
 
         // Validación: NO se puede cambiar un jugador de la alineación titular si configuracion->'modif_titulares' es false
+        $configuracion = $instanciaEquipoModelo->obtenerConfiguracion();
 
-        ///////// REALIZAR AQUÍ
+        if (is_array($configuracion) && $configuracion) {
+
+            if (!$configuracion[0]["modif_titulares"]) {
+
+                $data["jugadoresEquipo"] = $jugadores;
+                $data["errorTitular"] = "La jornada está en curso, por lo que no puedes cambiar la alineación titular";
+                $vista = new Vista();
+                $vista->renderizarVista("equipo", $data);
+                exit();
+            
+            }
+
+        } else {
+
+            $data["jugadoresEquipo"] = $jugadores;
+            $data["errorTitular"] = $configuracion;
+            $vista = new Vista();
+            $vista->renderizarVista("equipo", $data);
+            exit();
+
+        }
 
         $contador = 0; // Variable para contar los jugadores que son titulares en ese momento
 
@@ -229,8 +264,29 @@ class EquipoControlador {
         }
 
         // Validación: NO se puede cambiar un jugador de la alineación titular si configuracion->'modif_titulares' es false
+        $configuracion = $instanciaEquipoModelo->obtenerConfiguracion();
 
-        ///////// REALIZAR AQUÍ
+        if (is_array($configuracion) && $configuracion) {
+
+            if (!$configuracion[0]["modif_titulares"]) {
+
+                $data["jugadoresEquipo"] = $jugadores;
+                $data["errorTitular"] = "La jornada está en curso, por lo que no puedes cambiar la alineación titular";
+                $vista = new Vista();
+                $vista->renderizarVista("equipo", $data);
+                exit();
+            
+            }
+
+        } else {
+
+            $data["jugadoresEquipo"] = $jugadores;
+            $data["errorTitular"] = $configuracion;
+            $vista = new Vista();
+            $vista->renderizarVista("equipo", $data);
+            exit();
+
+        }
 
         // Realizar la actualización del registro en la BBDD
         $resultadoActualizacion = $instanciaEquipoModelo->deseleccionarTitular($idJugador);
@@ -332,8 +388,29 @@ class EquipoControlador {
         }
 
         // Validación: NO se puede vender un jugador que es titular si configuracion->'modif_titulares' es false
-        
-        ///////// REALIZAR AQUÍ
+        $configuracion = $instanciaEquipoModelo->obtenerConfiguracion();
+
+        if (is_array($configuracion) && $configuracion) {
+
+            if (!$configuracion[0]["modif_titulares"]) {
+
+                $data["jugadoresEquipo"] = $jugadores;
+                $data["errorTitular"] = "La jornada está en curso, por lo que no puedes vender los jugadores titulares";
+                $vista = new Vista();
+                $vista->renderizarVista("equipo", $data);
+                exit();
+            
+            }
+
+        } else {
+
+            $data["jugadoresEquipo"] = $jugadores;
+            $data["errorTitular"] = $configuracion;
+            $vista = new Vista();
+            $vista->renderizarVista("equipo", $data);
+            exit();
+
+        }
 
         // Obtener el valor de $dineroAdquirido directamente de la BBDD
         $resultadoPrecio = $instanciaEquipoModelo->obtenerPrecio($idJugador);

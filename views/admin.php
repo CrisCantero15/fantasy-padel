@@ -28,7 +28,7 @@
         </div>
     </header>
         <section id="adminPanel">
-            <h1>¡Bienvenido a la Administración de Padel Fantasy!</h1>
+            <h1>¡BIENVENIDO A LA ADMINISTRACIÓN DE PADEL FANTASY!</h1>
             <div id="panel">
                 <div class="panelPestanas">
                     <h3 id="pestanaEquipos" class="tituloPestana" data-contenido="contenidoEquipos">EQUIPOS</h3>
@@ -103,8 +103,9 @@
                         <h3>Inicio de la jornada - Actualizar la fecha de inicio de la próxima jornada</h3>
                         <form action="<?= $rutaApp ?>admin/configurarJornada" method="POST">
                             <div>
-                                <h4>El inicio de la próxima jornada implica que los usuarios no pueden hacer cambios en su equipo titular, es decir, ni cambiar la propia alineación ni vender esos jugadores</h4>
-                                <h4>Inicio próxima jornada: <span style="color: brown;"><?= htmlspecialchars($data["configuracion"][0]["fecha_jornada"]) ?></span></h4>
+                                <h4>🔔 Aviso importante:</h4>
+                                <h4>La fecha que establezcas a continuación se mostrará a los usuarios como referencia para el inicio de la próxima jornada. Sin embargo, <u>esta fecha no activa automáticamente el bloqueo de cambios en la alineación (debe realizarse en la sección inferior)</u>.</h4>
+                                <h4>Inicio próxima jornada: <span class="mensajeImportante"><?= htmlspecialchars($data["configuracion"][0]["fecha_jornada"]) ?></span></h4>
                             </div>
                             <input type="datetime-local" name="fechaJornada" required>
                             <button type="submit">ACTUALIZAR JORNADA</button>
@@ -112,22 +113,23 @@
                         <hr>
                         <h3>Alineación - Activar o desactivar la alineación</h3>
                         <div class="configuracionAlineacion">
+                            <h4>👉 Para aplicar realmente la restricción que impide modificar el equipo titular o vender jugadores, el administrador debe pulsar manualmente el botón de activación/desactivación más abajo en el panel.</h4>
                             <?php if ($data["configuracion"][0]["modif_titulares"]): ?>
                             <div>
-                                <h4>Estado actual: ✅</h4>
+                                <h4>Estado actual: <span style="color: green;">ACTIVADO</span> ✅</h4>
                                 <button class="btn" onclick="window.location.href='<?php echo $rutaApp ?>admin/desactivarAlineacion'">DESACTIVAR</button>
                             </div>
                             <?php else: ?>
                             <div>
-                                <h4>Estado actual: ❌</h4>
+                                <h4>Estado actual: <span style="color: #c2391b;">DESACTIVADO</span> ❌</h4>
                                 <button class="btn" onclick="window.location.href='<?php echo $rutaApp ?>admin/activarAlineacion'">ACTIVAR</button>
                             </div>
                             <?php endif; ?>
                             <!-- Mostrar errores al añadir jugador al mercado -->
                             <?php if (isset($data["errorConfiguracion"])): ?>
-                                <div class="alert-text-warning">
-                                    <p><?php echo $data["errorConfiguracion"] ?></p>
-                                </div>
+                            <div class="alert-text-warning">
+                                <p><?php echo $data["errorConfiguracion"] ?></p>
+                            </div>
                             <?php endif; ?>
                         </div>
                     </div>

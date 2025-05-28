@@ -158,6 +158,28 @@ class EquipoModelo {
 
     }
 
+    public function obtenerConfiguracion() {
+
+        try {
+            
+            $consulta = "
+                SELECT DATE_FORMAT(`fecha_jornada`, '%e de %M de %Y a las %H:%i') AS `fecha_jornada`, `modif_titulares`
+                FROM `configuracion`
+                WHERE `id` = 1
+            ";
+            $resultado = GestorBD::consultaLectura($consulta);
+
+            return $resultado;
+
+        } catch (PDOException $error) {
+            
+            echo "<script>console.error('Error al obtener la configuración de la aplicación. Error: " . addslashes($error->getMessage()) . "');</script>";
+            return "Error al obtener la configuración general de la aplicación de la BBDD. Por favor, inténtalo de nuevo más tarde.";
+
+        }
+
+    }
+
 }
 
 ?>

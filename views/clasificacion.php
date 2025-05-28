@@ -17,7 +17,7 @@
     <?php include_once "views/inc/header.php" ?>
     <main>
         <section id="clasificacion">
-            <h1>¿Quién lidera el fantasy? ¡Así va la liga!</h1>
+            <h1>¿QUIÉN LIDERA EL FANTASY? ¡ASÍ VA LA LIGA!</h1>
             <?php
                 if (isset($data["errorClasificacion"])) {
                     echo "<div class='error'><h4>" . $data["errorClasificacion"] . "</h4></div>";
@@ -49,7 +49,6 @@
                     ?>
                 </tbody>
             </table>
-            <!-- Maquetar sección de la clasificación de la liga -->
         </section>
     </main>
     <?php include_once "views/inc/footer.php" ?>
