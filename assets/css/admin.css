@@ -124,7 +124,7 @@ section > h1 {
     display: block;
 }
 
-/* Comienzo Tabla Equipos */
+/* Comienzo Tabla Equipos y Jugadores */
 
 .tablaClasificacion {
   margin: 0 auto;
@@ -166,4 +166,50 @@ section > h1 {
 .tablaClasificacion th:last-child,
 .tablaClasificacion td:last-child {
   border-right: 1px solid black;
+}
+
+/* Formulario para agregar un nuevo jugador */
+
+form, .configuracionAlineacion {
+    margin: 0 auto;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form input, form button, .btn {
+    padding: 1.5rem 1rem;
+    border: 1px solid #dadada;
+    border-radius: 10px;
+    font-family: Arial;
+}
+
+form input:focus {
+    outline: none;
+    border: 1px solid #3D6CA1;
+}
+
+form button, .btn {
+    margin: 0 auto;
+    width: 30%;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);
+    color: white;
+    font-weight: bold;
+}
+
+form button:hover, .btn:hover {
+    background: #1e5f8a;
+    cursor: pointer;
+}
+
+form button:active, .btn:active {
+    background: #1a4c6e;
+}
+
+hr {
+    width: 70%;
+    margin: 40px auto;
+    border: 1px solid #3D6CA1;
 }

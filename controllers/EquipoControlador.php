@@ -99,6 +99,10 @@ class EquipoControlador {
 
         }
 
+        // Validación: NO se puede cambiar un jugador de la alineación titular si configuracion->'modif_titulares' es false
+
+        ///////// REALIZAR AQUÍ
+
         $contador = 0; // Variable para contar los jugadores que son titulares en ese momento
 
         foreach ($jugadores as $jugador) {
@@ -224,6 +228,10 @@ class EquipoControlador {
 
         }
 
+        // Validación: NO se puede cambiar un jugador de la alineación titular si configuracion->'modif_titulares' es false
+
+        ///////// REALIZAR AQUÍ
+
         // Realizar la actualización del registro en la BBDD
         $resultadoActualizacion = $instanciaEquipoModelo->deseleccionarTitular($idJugador);
         // Obtener el listado de los jugadores del equipo después de la actualización para mostrarlos en la vista
@@ -322,6 +330,10 @@ class EquipoControlador {
             exit();
 
         }
+
+        // Validación: NO se puede vender un jugador que es titular si configuracion->'modif_titulares' es false
+        
+        ///////// REALIZAR AQUÍ
 
         // Obtener el valor de $dineroAdquirido directamente de la BBDD
         $resultadoPrecio = $instanciaEquipoModelo->obtenerPrecio($idJugador);

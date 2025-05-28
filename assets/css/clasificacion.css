@@ -50,16 +50,30 @@ section > h1 {
     text-align: center;
     /* border: 1px solid black; */
 }
+.tablaClasificacion th {
+    background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);
+    color: #F5F5DC;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 12px 16px;
+    border-top: 1px solid #000;
+    border-bottom: 2px solid #000;
+    text-shadow: 0 2px 10px black;
+}
 
-
-.tablaClasificacion th, .tablaClasificacion td {
+.tablaClasificacion td {
     padding: 10px;
     border-bottom: 1px solid black;
 }
 
+.tablaClasificacion th:first-of-type {
+    border-left: 1px solid black;
+    border-right: none;
+}
+
 .tablaClasificacion th:last-of-type {
-    background-color: #79a7e4;
-    border: 1px solid black;
+    border-left: none;
+    border-right: 1px solid black;
 }
 
 .tablaClasificacion td:first-of-type {

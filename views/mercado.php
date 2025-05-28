@@ -48,7 +48,7 @@
                         <tr>
                             <td><?= htmlspecialchars($jugador["nombre_jugador"]) ?></td>
                             <td><?= htmlspecialchars($jugador["puntuacion_jugador"]) ?></td>
-                            <td><?= htmlspecialchars($jugador["precio"]) ?>€</td>
+                            <td><?= number_format(htmlspecialchars($jugador["precio"])) ?>€</td>
                             <td>
                                 <form action="<?php echo $rutaApp ?>mercado/comprarJugador" method="POST">
                                     <input type="hidden" name="precioJugador" value="<?= $jugador["precio"] ?>">

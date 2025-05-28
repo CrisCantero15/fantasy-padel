@@ -27,7 +27,6 @@
             <button onclick="window.location.href='<?php echo $rutaApp . 'admin/cerrarSesion'; ?>'">CERRAR SESIÓN</button>
         </div>
     </header>
-    <main>
         <section id="adminPanel">
             <h1>¡Bienvenido a la Administración de Padel Fantasy!</h1>
             <div id="panel">
@@ -86,14 +85,51 @@
                         </table>
                     </div>
                     <div id="contenidoMercado" class="panelTexto">
-                        <h4>Mercado</h4>
-                        <p>Aquí podrás gestionar el mercado de la aplicación.</p>
-                        <!-- Aquí se pueden añadir más funcionalidades relacionadas con el mercado -->
+                        <h3>Mercado - Añadir jugador al mercado</h3>
+                        <form action="<?= $rutaApp ?>admin/anadirJugador" method="POST">
+                            <h4>Para añadir un jugador al mercado, introduce su nombre y el precio. Si introduces un jugador ya existente, la aplicación lanzará un mensaje de error. Revisa bien la tabla de jugadores antes de proceder</h4>
+                            <input type="text" name="nombreJugador" placeholder="Nombre del jugador" required>
+                            <input type="number" name="precioJugador" placeholder="Precio del jugador" required>
+                            <button type="submit"><i class="fa-solid fa-plus" style="margin-right: 10px;"></i>AÑADIR JUGADOR</button>
+                            <!-- Mostrar errores al añadir jugador al mercado -->
+                            <?php if (isset($data["errorMercado"])): ?>
+                                <div class="alert-text-warning">
+                                    <p><?php echo $data["errorMercado"] ?></p>
+                                </div>
+                            <?php endif; ?>
+                        </form>
                     </div>
                     <div id="contenidoConfiguracion" class="panelTexto">
-                        <h4>Configuración</h4>
-                        <p>Aquí podrás gestionar los datos principales de funcionamiento de la aplicación.</p>
-                        <!-- Aquí se pueden añadir más funcionalidades relacionadas con el mercado -->
+                        <h3>Inicio de la jornada - Actualizar la fecha de inicio de la próxima jornada</h3>
+                        <form action="<?= $rutaApp ?>admin/configurarJornada" method="POST">
+                            <div>
+                                <h4>El inicio de la próxima jornada implica que los usuarios no pueden hacer cambios en su equipo titular, es decir, ni cambiar la propia alineación ni vender esos jugadores</h4>
+                                <h4>Inicio próxima jornada: <span style="color: brown;"><?= htmlspecialchars($data["configuracion"][0]["fecha_jornada"]) ?></span></h4>
+                            </div>
+                            <input type="datetime-local" name="fechaJornada" required>
+                            <button type="submit">ACTUALIZAR JORNADA</button>
+                        </form>
+                        <hr>
+                        <h3>Alineación - Activar o desactivar la alineación</h3>
+                        <div class="configuracionAlineacion">
+                            <?php if ($data["configuracion"][0]["modif_titulares"]): ?>
+                            <div>
+                                <h4>Estado actual: ✅</h4>
+                                <button class="btn" onclick="window.location.href='<?php echo $rutaApp ?>admin/desactivarAlineacion'">DESACTIVAR</button>
+                            </div>
+                            <?php else: ?>
+                            <div>
+                                <h4>Estado actual: ❌</h4>
+                                <button class="btn" onclick="window.location.href='<?php echo $rutaApp ?>admin/activarAlineacion'">ACTIVAR</button>
+                            </div>
+                            <?php endif; ?>
+                            <!-- Mostrar errores al añadir jugador al mercado -->
+                            <?php if (isset($data["errorConfiguracion"])): ?>
+                                <div class="alert-text-warning">
+                                    <p><?php echo $data["errorConfiguracion"] ?></p>
+                                </div>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
             </div>

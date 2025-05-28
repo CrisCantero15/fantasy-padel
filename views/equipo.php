@@ -70,7 +70,7 @@
                     <div class="alert-text-warning">
                         <p><?php echo $data["errorTitular"] ?></p>
                     </div>
-                        <?php endif; ?>
+                    <?php endif; ?>
                 </div>
                 <div class="seleccionJugadores">
                     <!-- OJO: Añadir una variación de color/estilo a los jugadores seleccionados para titular ('en_titular = true') -->
