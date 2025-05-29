@@ -60,7 +60,22 @@ class PerfilControlador {
 
         if (isset($_POST["old-pass"]) && !empty($_POST["old-pass"])) {
 
-            // +++ Verificar la contraseña con la BBDD para ver que coinciden y hacer el proceso más robusto
+            // Verificar la contraseña con la BBDD para ver que coinciden y hacer el proceso más robusto
+            $idUsuario = $_SESSION["id_usuario"];
+            $contrasena = $_POST["old-pass"];
+
+            $instanciaPerfilModelo = new PerfilModelo();
+            $resultado = $instanciaPerfilModelo->validarContrasena($idUsuario, $contrasena);
+
+            if (!$resultado) {
+
+                // Si la contraseña no coincide, se muestra un mensaje de error
+                $data["errorValidacion"] = "Contraseña incorrecta";
+                $vista = new Vista();
+                $vista->renderizarVista("perfil", $data);
+                exit();
+
+            }
 
             $columnasConsulta = [];
             $valoresConsulta = [];

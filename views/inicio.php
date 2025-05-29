@@ -121,7 +121,7 @@
             <div id="infoNovedades">
                 <div class="novedadAppPrincipal">
                     <div class="infoNovedad">
-                        <h2>¡Arranca Padel Fantasy!</h2>
+                        <h2>¡ARRANCA PADEL FANTASY!</h2>
                         <p>Ya está disponible el juego donde puedes crear tu propio equipo con jugadores reales del circuito profesional. Compite semana a semana, suma puntos según su rendimiento y demuestra que eres el mejor mánager. ¡No te lo pierdas!</p>
                     </div>
                     <div class="imgNovedad">
@@ -130,27 +130,27 @@
                 </div>
                 <div class="novedadAppSecundaria">
                     <div class="infoNovedad">
-                        <h3>Título</h3>
+                        <h3>CONFIGURA TU EQUIPO INICIAL</h3>
                     </div>
-                    <div class="imgNovedad">
+                    <!-- <div class="imgNovedad">
                         <img src="" alt="">
-                    </div>
+                    </div> -->
                 </div>
                 <div class="novedadAppSecundaria">
                     <div class="infoNovedad">
-                        <h3>Título</h3>
+                        <h3>COMPRA Y VENDE JUGADORES</h3>
                     </div>
-                    <div class="imgNovedad">
+                    <!-- <div class="imgNovedad">
                         <img src="" alt="">
-                    </div>
+                    </div> -->
                 </div>
                 <div class="novedadAppSecundaria">
                     <div class="infoNovedad">
-                        <h3>Título</h3>
+                        <h3>VISUALIZA LA CLASIFICACIÓN</h3>
                     </div>
-                    <div class="imgNovedad">
+                    <!-- <div class="imgNovedad">
                         <img src="" alt="">
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -162,45 +162,49 @@
                         <img src="../assets/img/noticia_padel1.jpg" alt="">
                     </div>
                     <div class="infoNoticia">
-                        <h4>Pádel - 18/05/2025</h4>
+                        <h4>Pádel - 29/05/2025</h4>
                         <h2>La Pro Padel League se internacionalizará y llegará a España en julio</h2>
                         <p>El pádel no es solo el circuito profesional. Existen otras muchas competiciones muy atractivas como la Hexagon Cup, la Reserve Cup o la Pro Padel League que ofrecen un gran espectáculo para el público y un producto diferente a lo que se puede ver habitualmente en Premier Padel. En este caso, es la Pro Padel League la que ha anunciado un giro en su filosofía, saliendo de su país de origen, Estados Unidos, para llegar también a México y España.</p>
+                        <p>Se trata de un campeonato que cuenta con algunas de las principales figuras de este deporte y que tuvo bastante éxito la temporada pasada. Tiene también la peculiaridad de jugarse por equipos y en un formato liga con varias jornadas que culmina con una prueba final. Formato muy atractivo que cada vez está más presente en este deporte. </p>
+                        <p>Durante el 2024 tuvieron varios eventos, pero todos en territorio norteamericano. Sin embargo, han decidido apostar por la ampliación de fronteras para dar a conocer esta competición a un público mayor. El calendario publicado cuenta con cinco fechas, entre las que se encuentra San Sebastián. La PPL lleva su producto al país donde existe mayor afición al pádel en la actualidad y a una zona donde no es habitual ver este deporte a nivel profesional. </p>
                     </div>
                 </div>
                 <div class="noticiaSecundaria">
                     <div class="infoNoticia">
-                        <h4>Subtítulo</h4>
-                        <h2>Título</h2>
+                        <h4>Pádel - 28/05/2025</h4>
+                        <h2>El bendito problema de Paquito Navarro en Argentina</h2>
+                        <p>En Buenos Aires se celebra uno de los eventos más emotivos del circuito de pádel, donde el ambiente y la pasión del público argentino lo convierten en una cita imperdible, a pesar de no ser un torneo Major. Paquito Navarro, reconocido jugador español, ha confesado sentirse en parte argentino debido a la cercanía con sus compañeros de esa nacionalidad, llegando incluso a adoptar parte de su acento y costumbres.</p>
                     </div>
-                    <div class="imgNoticia">
+                    <!-- <div class="imgNoticia">
                         <img src="" alt="">
-                    </div>
+                    </div> -->
                 </div>
                 <div class="noticiaSecundaria">
                     <div class="infoNoticia">
-                        <h4>Subtítulo</h4>
-                        <h2>Título</h2>
+                        <h4>Pádel - 27/05/2025</h4>
+                        <h2>Martina y Aranza agitan la coctelera y provocan caos en 1/16</h2>
+                        <p>El arranque de los torneos suele ser un desafío para las parejas mejor posicionadas, ya que se enfrentan a rivales con menos presión y más ritmo de competición. Esto les ocurrió a Martita Ortega y Alejandra Alonso, quienes fueron eliminadas por Aranza Osoro y Martina Calvo, una dupla que mostró una gran compenetración y el nivel necesario para vencer a las número cinco del ranking.</p>
                     </div>
-                    <div class="imgNoticia">
+                    <!-- <div class="imgNoticia">
                         <img src="" alt="">
-                    </div>
+                    </div> -->
                 </div>
                 <div class="proximosEventos">
                     <div class="proximosPartidos">
-                        <h2>Próximos partidos</h2>
-                        <p>Pareja 1 vs Pareja 2 | Fecha - Hora - Sede</p>
-                        <p>Pareja 1 vs Pareja 2 | Fecha - Hora - Sede</p>
-                        <p>Pareja 1 vs Pareja 2 | Fecha - Hora - Sede</p>
-                        <p>Pareja 1 vs Pareja 2 | Fecha - Hora - Sede</p>
-                        <p>Pareja 1 vs Pareja 2 | Fecha - Hora - Sede</p>
+                        <h2>PRÓXIMOS PARTIDOS</h2>
+                        <p><span class="colorRojo"><strong>Arturo Coello / Agustín Tapia vs. Víctor Ruiz / Francisco Gil</strong></span> | 29/05 - 12:00 (hora local) - Estadio Parque Roca</p>
+                        <p><span class="colorRojo"><strong>Federico Chingotto / Alejandro Galán vs. Enrique Goenaga / Luis Hernández Quesada</strong></span> | 29/05 - 14:00 (hora local) - Estadio Parque Roca</p>
+                        <p><span class="colorRojo"><strong>Gemma Triay / Delfi Brea vs. Alix Collombon / Araceli Martínez</strong></span> | 29/05 - 10:00 (hora local) - Estadio Parque Roca</p>
+                        <p><span class="colorRojo"><strong>Bea González / Claudia Jensen vs. Jessica Castelló / Aranza Osoro</strong></span> | 29/05 - 12:00 (hora local) - Estadio Parque Roca</p>
+                        <p><span class="colorRojo"><strong>Paula Josemaría / Ariana Sánchez vs. Lucía Sainz / Patricia Llaguno</strong></span> | 29/05 - 10:00 (hora local) - Estadio Parque Roca</p>
                     </div>
                     <div class="proximosTorneos">
-                        <h2>Próximos torneos</h2>
-                        <p>Torneo 1 | Fecha Inicio - Fecha Fin</p>
-                        <p>Torneo 2 | Fecha Inicio - Fecha Fin</p>
-                        <p>Torneo 3 | Fecha Inicio - Fecha Fin</p>
-                        <p>Torneo 4 | Fecha Inicio - Fecha Fin</p>
-                        <p>Torneo 5 | Fecha Inicio - Fecha Fin</p>
+                        <h2>PRÓXIMOS TORNEOS</h2>
+                        <p><span class="colorRojo"><strong>Premier Padel Buenos Aires P1</strong></span> | 25/05/2025 - 01/06/2025</p>
+                        <p><span class="colorRojo"><strong>BNL Italy Major</strong></span> | 09/06/2025 - 15/06/2025</p>
+                        <p><span class="colorRojo"><strong>Premier Padel Valladolid P2</strong></span> | 23/06/2025 - 29/06/2025</p>
+                        <p><span class="colorRojo"><strong>Premier Padel Bordeaux P2</strong></span> | 30/06/2025 - 06/07/2025</p>
+                        <p><span class="colorRojo"><strong>Premier Padel Málaga P1</strong></span> | 14/07/2025 - 20/07/2025</p>
                     </div>
                 </div>
             </div>

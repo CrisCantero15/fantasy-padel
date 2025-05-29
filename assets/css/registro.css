@@ -61,7 +61,7 @@ main {
 }
 
 .form-register {
-    background-color: white;
+    background-color: #bcd5f5;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -75,6 +75,9 @@ main {
 }
 
 .form-register h1 {
+    color: #F5F5DC;
+    font-weight: 1000;
+    text-shadow: 0 2px 10px black;
     font-size: 2.25rem;
 }
 

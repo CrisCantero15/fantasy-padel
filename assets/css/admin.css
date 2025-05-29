@@ -1,6 +1,3 @@
-* Mejorar el diseño responsive */
-/* En responsive, quitar las imágenes de la novedad principal o cambiar a display flex column y ponerla abajo */
-
 * {
     box-sizing: border-box;
 }
@@ -14,7 +11,7 @@ body {
     padding: 0;
 }
 
-/* Header - HACER RESPONSIVE */
+/* Header */
 
 header {
     background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);
@@ -136,6 +133,7 @@ section > h1 {
     display: none;
     margin-top: 50px;
     text-align: center;
+    overflow-x: auto;
 }
 
 .panelTexto:first-of-type {
@@ -146,14 +144,17 @@ section > h1 {
 
 .tablaClasificacion {
   margin: 0 auto;
-  width: 70%;
+  min-width: 70%;
+  max-width: 100%;
   border-collapse: collapse;
+  table-layout: auto;
   text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 50px;
+  word-break: break-word;
 }
 
-/* Encabezados de la tabla */
+/* Encabezados */
 .tablaClasificacion th {
   background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);
   color: #F5F5DC;
@@ -163,20 +164,28 @@ section > h1 {
   border-top: 1px solid #000;
   border-bottom: 2px solid #000;
   text-shadow: 0 2px 10px black;
+  white-space: normal;
 }
 
-/* Celdas de contenido */
+/* Celdas */
 .tablaClasificacion td {
   background-color: #b8c3d1;
   font-size: 1.15rem;
   padding: 12px 16px;
   vertical-align: middle;
   border-bottom: 1px solid #000;
+  white-space: normal;
+}
+
+/* Elimina el max-width problemático */
+.tablaClasificacion th,
+.tablaClasificacion td {
+  max-width: none;
 }
 
 /* Bordes izquierdo y derecho */
 .tablaClasificacion th:first-child,
-.tablaClasificacion form:first-child {
+.tablaClasificacion td:first-child {
   border-left: 1px solid black;
   text-align: left;
   padding-left: 20px;
@@ -185,6 +194,8 @@ section > h1 {
 .tablaClasificacion th:last-child,
 .tablaClasificacion td:last-child {
   border-right: 1px solid black;
+  text-align: center;
+  max-width: 50px;
 }
 
 .inputPlano {
@@ -275,3 +286,133 @@ hr {
     margin-top: 50px;
     width: 70%;
 }
+
+/* Responsive para pantallas medianas (tablets, landscape) */
+@media (max-width: 1024px) {
+  header {
+    flex-direction: column;
+    min-height: auto;
+    padding: 20px 4vw;
+    gap: 20px;
+  }
+  .logoHeader img {
+    max-width: 20vw;
+    min-width: 80px;
+  }
+  .textHeader {
+    max-width: 100%;
+    text-align: center;
+  }
+  .textHeader h3 {
+    font-size: 1.25rem;
+  }
+  .btnHeader button {
+    font-size: 1.25rem;
+    padding: 0.4rem 0.8rem;
+  }
+  #panel {
+    width: 80%;
+  }
+  .panelPestanas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 10px;
+    width: 100%;
+    justify-items: center;
+  }
+  .tituloPestana {
+    font-size: 1rem;
+  }
+  .tablaClasificacion {
+    width: 80%;
+    font-size: 1rem;
+  }
+  .tablaClasificacion th {
+    padding: 10px 15px;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+    font-weight: 700;
+    text-align: left;
+  }
+  .tablaClasificacion td, .tablaClasificacion th {
+    padding: 10px 15px;
+    font-size: 1rem;
+  }
+  form, .configuracionAlineacion {
+    width: 90%;
+  }
+  form button, .btn {
+    width: 50%;
+  }
+  hr {
+    width: 90%;
+  }
+}
+
+/* Responsive para pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    padding: 15px 3vw;
+    gap: 15px;
+  }
+  .logoHeader img {
+    max-width: 30vw;
+    min-width: 60px;
+  }
+  .textHeader {
+    max-width: 100%;
+    text-align: center;
+  }
+  .textHeader h3 {
+    font-size: 1rem;
+  }
+  .btnHeader button {
+    font-size: 1rem;
+    padding: 0.3rem 0.6rem;
+    width: 100%;
+  }
+  #panel {
+    width: 80%;
+    padding: 0 10px;
+  }
+  .panelPestanas {
+    width: 100%;
+    justify-items: center;
+  }
+  .tituloPestana {
+    font-size: 1rem;
+  }
+  .tablaClasificacion {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  .tablaClasificacion th {
+    padding: 8px 10px;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+    font-weight: 600;
+    text-align: left;
+  }
+  .tablaClasificacion td, .tablaClasificacion th {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+  form, .configuracionAlineacion {
+    width: 100%;
+    padding: 0 10px;
+  }
+  form button, .btn {
+    width: 100%;
+  }
+  hr {
+    width: 100%;
+  }
+  .alert-text-warning, .alert-text-success {
+    width: 100% !important;
+    margin: 0 auto 20px auto !important;
+  }
+}
+
+

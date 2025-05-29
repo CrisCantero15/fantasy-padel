@@ -33,6 +33,8 @@
         </ul>
     </div>
     <div>
-        <button onclick="window.location.href='<?php echo $rutaApp . 'inicio/cerrarSesion'; ?>'">CERRAR SESIÓN</button>
+        <button onclick="window.location.href='<?php echo $rutaApp . 'inicio/cerrarSesion'; ?>'">
+            <i class="fas fa-sign-out-alt"></i>
+        </button>
     </div>
 </header>

@@ -20,7 +20,7 @@
             </div>
             <div class="form-register">
                 <div class="text-form">
-                    <h1>¿Listo para ser el mejor mánager de padel?</h1>
+                    <h1>¿LISTO PARA SER EL MEJOR MÁNAGER DE PADEL?</h1>
                     <h2>Rellena los campos... ¡y que comience el juego!</h2>
                 </div>
                 <form action="<?php echo $rutaApp ?>registro/validarRegistro" method="POST">
@@ -34,7 +34,7 @@
                         <p><?php echo $data["errorRegistro"] ?></p>
                     </div>
                     <?php } ?>
-                    <button type="submit">Enviar</button>
+                    <button type="submit">ENVIAR</button>
                 </form>
             </div>
             <?php if (isset($data["exitoRegistro"])) { ?>
@@ -44,7 +44,7 @@
                         <h1>¡Registro completado!</h1>
                         <p><?php echo $data["exitoRegistro"] ?></p>
                     </div>
-                    <button id="btn-modal" onclick="window.location.href='<?php echo $rutaApp ?>registro/iniciarLogin'">Iniciar sesión</button>
+                    <button id="btn-modal" onclick="window.location.href='<?php echo $rutaApp ?>registro/iniciarLogin'">INICIAR SESIÓN</button>
                 </div>
             </div>
             <?php } ?>

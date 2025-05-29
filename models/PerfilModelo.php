@@ -91,6 +91,15 @@ class PerfilModelo {
 
     }
 
+    public function validarContrasena($idUsuario, $contrasena) {
+
+        $consulta = "SELECT * FROM `usuarios` WHERE `id_usuario` = ?";
+        $resultado = GestorBD::consultaLectura($consulta, $idUsuario);
+
+        return is_array($resultado) && count($resultado) > 0 && password_verify($contrasena, $resultado[0]["contrasena"]);; // El usuario y la contraseña son correctos
+
+    }
+
 }
 
 ?>

@@ -11,7 +11,7 @@
     </div>
     <div class="footer-contact">
         <a href="<?php echo $rutaApp ?>contacto/accederContacto">
-            <i class="fa-solid fa-circle-info"></i>
+            <i class="fas fa-envelope"></i>
             <p>CONTACTO</p>
         </a>
     </div>

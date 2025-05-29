@@ -24,7 +24,9 @@
             <h3>Vista del administrador - Tus acciones pueden comprometer el funcionamiento de la aplicación</h3>
         </div>
         <div class="btnHeader">
-            <button onclick="window.location.href='<?php echo $rutaApp . 'admin/cerrarSesion'; ?>'">CERRAR SESIÓN</button>
+            <button onclick="window.location.href='<?php echo $rutaApp . 'admin/cerrarSesion'; ?>'">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
         </div>
     </header>
         <section id="adminPanel">
