@@ -45,19 +45,38 @@
                                     <th>NOMBRE DEL EQUIPO</th>
                                     <th>PUNTUACIÓN TOTAL</th>
                                     <th>PRESUPUESTO</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($data["equipos"] as $equipo): ?>
                                 <tr>
-                                    <td><?= htmlspecialchars($equipo["nombre_equipo"]) ?></td>
-                                    <td><?= htmlspecialchars($equipo["puntuacion_total"]) ?></td>
-                                    <td><?= number_format(htmlspecialchars($equipo["presupuesto"])) . "€" ?></td>
+                                    <form action="<?php echo $rutaApp ?>admin/actualizarEquipo" method="POST">
+                                        <input type="hidden" name="idEquipo" value="<?= htmlspecialchars($equipo["id_equipo"]) ?>">
+                                        <td style="border-left: 1px solid black;"><input type="text" name="nombreEquipo" style="text-align: left;" value="<?= htmlspecialchars($equipo["nombre_equipo"]) ?>" class="inputPlano" readonly></td>
+                                        <td><input type="number" name="puntuacionTotal" value="<?= htmlspecialchars($equipo["puntuacion_total"]) ?>" class="inputPlano" readonly></td>
+                                        <td><input type="number" name="presupuestoEquipo" value="<?= htmlspecialchars($equipo["presupuesto"]) ?>" class="inputPlano" readonly></td>
+                                        <td>
+                                            <button class="btnEditar" type="button">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btnGuardar" style="display: none;" type="submit">
+                                                <i class="fas fa-save"></i>
+                                            </button>
+                                            <button class="btnDeshacer" style="display: none;" type="button">
+                                                <i class="fas fa-undo"></i>
+                                            </button>
+                                        </td>
+                                    </form>
                                 </tr>
                                 <?php endforeach; ?>
-                                <!-- Añadir botón para editar los datos de un equipo -->
                             </tbody>
                         </table>
+                        <?php if (isset($data["errorEquipos"])): ?>
+                            <div class="alert-text-warning">
+                                <p><?php echo $data["errorEquipos"] ?></p>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <!-- Listado de los jugadores -->
                     <div id="contenidoJugadores" class="panelTexto">
@@ -68,21 +87,47 @@
                                     <th>PUNTUACIÓN</th>
                                     <th>PRECIO</th>
                                     <th>¿TIENE EQUIPO?</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($data["jugadores"] as $jugador): ?>
                                 <tr>
-                                    <td><?= htmlspecialchars($jugador["nombre_jugador"]) ?></td>
-                                    <td><?= htmlspecialchars($jugador["puntuacion_jugador"]) ?></td>
-                                    <td><?= number_format(htmlspecialchars($jugador["precio"])) . '€' ?></td>
-                                    <td><?= htmlspecialchars($jugador["en_equipo"] ? '✅' : '❌') ?></td>
+                                    <form action="<?php echo $rutaApp ?>admin/actualizarJugador" method="POST">
+                                        <input type="hidden" name="idJugador" value="<?= htmlspecialchars($jugador["id_jugador"]) ?>">
+                                        <td style="border-left: 1px solid black;"><input type="text" name="nombreJugador" style="text-align: left;" value="<?= htmlspecialchars($jugador["nombre_jugador"]) ?>" class="inputPlano" readonly></td>
+                                        <td><input type="number" name="puntuacionJugador" value="<?= htmlspecialchars($jugador["puntuacion_jugador"]) ?>" class="inputPlano" readonly></td>
+                                        <td><input type="number" name="precioJugador" value="<?= htmlspecialchars($jugador["precio"]) ?>" class="inputPlano" readonly></td>
+                                        <td><?= htmlspecialchars($jugador["en_equipo"] ? '✅' : '❌') ?></td>
+                                        <td>
+                                            <button class="btnEditar" type="button">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btnGuardar" style="display: none;" type="submit">
+                                                <i class="fas fa-save"></i>
+                                            </button>
+                                            <button class="btnDeshacer" style="display: none;" type="button">
+                                                <i class="fas fa-undo"></i>
+                                            </button>
+                                            <button class="btnEliminar" type="submit" formaction="<?= $rutaApp ?>admin/EliminarJugador" onclick="return confirm('¿Estás seguro de que quieres eliminar este jugador? Esta acción no se puede deshacer.');">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </form>
                                 </tr>
                                 <?php endforeach; ?>
-                                <!-- Añadir un input (o botón para abrir un modal) para añadir puntuación a ese jugador o directamente editarlo -->
-                                <!-- Botón para eliminar un jugador -->
                             </tbody>
                         </table>
+                        <?php if (isset($data["mensajeJugador"])): ?>
+                            <div class="alert-text-success">
+                                <p><?php echo $data["mensajeJugador"] ?></p>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (isset($data["errorJugador"])): ?>
+                            <div class="alert-text-warning">
+                                <p><?php echo $data["errorJugador"] ?></p>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <div id="contenidoMercado" class="panelTexto">
                         <h3>Mercado - Añadir jugador al mercado</h3>
@@ -140,6 +185,8 @@
     <?php include_once "views/inc/footer.php"; ?>
     <script>
         activarPestanas();
+        iniciarBotonEditar();
+        iniciarBotonDeshacer();
     </script>
 </body>
 </html>

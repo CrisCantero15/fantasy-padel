@@ -84,6 +84,7 @@
                     <div class="contenidoAcordeon">
                         <p>Cada jornada deberás alinear a tus jugadores titulares, eligiendo cuidadosamente quiénes sumarán puntos para tu equipo. <strong>Solo los jugadores alineados participarán en la puntuación de esa jornada</strong>.</p>
                         <p>El sistema te permite cambiar tu alineación entre jornadas, adaptándola al rendimiento y a los enfrentamientos del circuito. La estrategia en la elección será clave para escalar posiciones en la clasificación.</p>
+                        <p>⚠️ La fecha y hora de inicio de la próxima jornada están indicadas en la sección <strong>EQUIPO</strong>, así que asegúrate de revisar y ajustar tu alineación antes de ese momento.</p>
                     </div>
                 </div>
                 <div class="pestanaAcordeon">

@@ -20,8 +20,8 @@
         <section id="modal">
             <div>
                 <h3><?= $data["mensajeModal"] ?></h3>
-                <button class="btnModal" onclick="window.location.href='<?= $rutaApp ?>mercado/accederMercado'">Seguir comprando</button>
-                <button class="btnModal" onclick="window.location.href='<?= $rutaApp ?>equipo/accederEquipo'">Ir a mi equipo</button>
+                <button class="btnModal" onclick="window.location.href='<?= $rutaApp ?>mercado/accederMercado'">SEGUIR COMPRANDO</button>
+                <button class="btnModal" onclick="window.location.href='<?= $rutaApp ?>equipo/accederEquipo'">IR A MI EQUIPO</button>
             </div>
         </section>
         <script>

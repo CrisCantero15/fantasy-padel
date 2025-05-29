@@ -219,6 +219,136 @@ class AdminModelo {
 
     }
 
+    public function actualizarEquipo($idEquipo, $nombreEquipo, $puntuacionTotal, $presupuestoEquipo) {
+
+        try {
+            
+            // 1. Validar que no existe otro equipo con el mismo nombre
+            $consulta = "
+                SELECT 1
+                FROM `equipos`
+                WHERE `nombre_equipo` = ? AND `id_equipo` != ? LIMIT 1
+            ";
+            $resultadoValidacion = GestorBD::consultaLectura($consulta, $nombreEquipo, $idEquipo);
+
+            if (!empty($resultadoValidacion)) {
+
+                return "El nombre del equipo ya existe en la base de datos. Por favor, elige otro";
+
+            }
+
+            // 2. Actualizar el equipo en la base de datos
+            $consulta = "
+                UPDATE `equipos`
+                SET `nombre_equipo` = ?, `puntuacion_total` = ?, `presupuesto` = ?
+                WHERE `id_equipo` = ?
+            ";
+            $resultadoActualizacion = GestorBD::consultaActualizacion($consulta, $nombreEquipo, $puntuacionTotal, $presupuestoEquipo, $idEquipo);
+
+            return $resultadoActualizacion;
+
+        } catch (PDOException $error) {
+            
+            echo "<script>console.error('Error al actualizar el equipo: " . addslashes($error->getMessage()) . "');</script>";
+            return "Error al actualizar el equipo en la BBDD. Por favor, inténtalo de nuevo más tarde.";
+
+        }
+
+    }
+
+    public function actualizarJugador($idJugador, $nombreJugador, $puntuacionJugador, $diferenciaPuntuacion,$precioJugador) {
+        
+        try {
+            
+            // 1. Validar que no existe otro jugador con el mismo nombre
+            $consulta = "
+                SELECT 1
+                FROM `jugadores`
+                WHERE `nombre_jugador` = ? AND `id_jugador` != ? LIMIT 1
+            ";
+            $resultadoValidacion = GestorBD::consultaLectura($consulta, $nombreJugador, $idJugador);
+            
+            if (!empty($resultadoValidacion)) {
+                
+                // Se obtiene un array con valores
+                return "El nombre del jugador ya existe en la base de datos. Por favor, elige otro";
+
+            }
+
+            // 2. La diferencia entre la puntuación actual del jugador y la puntuación nueva se le añade a la puntuación total del equipo (si tiene al jugador en 'en_titular' = true)
+            $consulta = "
+                UPDATE `equipos`
+                SET `puntuacion_total` = `puntuacion_total` + ?
+                WHERE `id_equipo` = (
+                    SELECT `id_equipo`
+                    FROM `equipos_jugadores`
+                    WHERE `id_jugador` = ? AND `en_titular` = 1
+                )
+            ";
+            $resultadoActualizacion1 = GestorBD::consultaActualizacion($consulta, $diferenciaPuntuacion, $idJugador);
+            $mensajeJugador = "";
+
+            if ($resultadoActualizacion1 === false) {
+
+                $mensajeJugador = "No se ha actualizado la puntuación de ningún equipo porque o el jugador no está en un equipo o porque, aunque estándolo, no es titular";
+
+            } else {
+
+                $mensajeJugador = "Se ha actualizado la puntuación de un equipo porque el jugador está en un equipo y es titular";
+
+            }
+
+            // 3. Actualizar el jugador en la tabla de jugadores
+            $consulta = "
+                UPDATE `jugadores`
+                SET `nombre_jugador` = ?, `puntuacion_jugador` = ?, `precio` = ?
+                WHERE `id_jugador` = ?
+            ";
+            $resultadoActualizacion2 = GestorBD::consultaActualizacion($consulta, $nombreJugador, $puntuacionJugador, $precioJugador, $idJugador);
+
+            return [
+                'exito' => $resultadoActualizacion2,
+                'mensajeJugador' => $mensajeJugador
+            ];
+
+        } catch (PDOException $error) {
+            
+            echo "<script>console.error('Error al actualizar el jugador: " . addslashes($error->getMessage()) . "');</script>";
+            return "Error al actualizar el jugador en la BBDD. Por favor, inténtalo de nuevo más tarde.";
+
+        }
+
+    }
+
+    public function eliminarJugador($idJugador) {
+
+        try {
+            
+            // 1. Eliminar el jugador de la tabla jugadores
+            $consulta = "
+                DELETE FROM `jugadores`
+                WHERE `id_jugador` = ?
+            ";
+            $resultado1 = GestorBD::consultaActualizacion($consulta, $idJugador);
+
+            // 2. Eliminar el jugador de la tabla de equipos_jugadores
+            $consulta = "
+                DELETE FROM `equipos_jugadores`
+                WHERE `id_jugador` = ?
+            ";
+            $resultado2 = GestorBD::consultaActualizacion($consulta, $idJugador);
+
+            return $resultado1 && $resultado2;
+
+        } catch (PDOException $error) {
+            
+            echo "<script>console.error('Error al eliminar el jugador: " . addslashes($error->getMessage()) . "');</script>";
+            return "Error al eliminar el jugador de la BBDD. Por favor, inténtalo de nuevo más tarde.";
+
+        }
+
+    }
+
 }
 
 ?>

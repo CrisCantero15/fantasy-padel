@@ -91,3 +91,59 @@ const iniciarPestanas = (pestanaActiva, contenidoActivo) => {
     contenidoSeleccionado.style.display = 'block'; // Se muestra el contenido seleccionado
 
 }
+
+// Botón de editar (eliminar readonly)
+
+const iniciarBotonEditar = () => {
+
+    document.querySelectorAll('.btnEditar').forEach(btn => {
+        
+        btn.addEventListener('click', () => {
+            
+            const filaFormulario = btn.closest("tr");
+            const inputsEquipo = filaFormulario.querySelectorAll('input');
+
+            inputsEquipo.forEach(input => {
+                input.dataset.original = input.value // Guarda el valor original del input en el atributo data-original
+                input.removeAttribute('readonly'); // Elimina el atributo readonly de los inputs
+            });
+
+            filaFormulario.querySelector('.btnGuardar').style.display = 'inline-block'; // Muestra el botón de guardar
+            filaFormulario.querySelector('.btnDeshacer').style.display = 'inline-block'; // Muestra el botón de deshacer
+            btn.style.display = 'none'; // Oculta el botón de editar
+
+        });
+
+    });
+
+}
+
+// Botón de deshacer (añadir readonly y eliminar el botón de guardar)
+
+const iniciarBotonDeshacer = () => {
+
+    document.querySelectorAll('.btnDeshacer').forEach(btn => {
+
+        btn.addEventListener('click', () => {
+
+            const filaFormulario = btn.closest('tr');
+            const inputsEquipo = filaFormulario.querySelectorAll('input');
+
+            inputsEquipo.forEach(input => {
+                if (input.dataset.original !== undefined) {
+                    input.value = input.dataset.original; // Restaura el valor original del input
+                } else {
+                    input.value = ''; // Restaura el valor vacío del input
+                }
+                input.setAttribute('readonly', ''); // Añade el atributo readonly a los inputs
+            });
+
+            filaFormulario.querySelector('.btnGuardar').style.display = 'none'; // Oculta el botón de guardar
+            filaFormulario.querySelector('.btnEditar').style.display = 'inline-block'; // Muestra el botón de editar
+            btn.style.display = 'none'; // Muestra el botón de deshacer
+
+        });
+
+    });
+
+}

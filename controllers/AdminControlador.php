@@ -51,12 +51,276 @@ Class AdminControlador {
 
     }
 
-    public function actualizarPuntuacion() {
+    public function actualizarEquipo() {
 
-        // Paso 1: Actualizar la puntuación de un jugador
-        // Paso 2: Actualizar la puntuación total del equipo que tenga ese jugador (si algun equipo lo tiene)
-            // Para ello se puede hacer un SELECT SUM con un JOIN entre la tabla jugadores y equipos_jugadores con aquellos jugadores que correspondan al ID del equipo correspondiente 
-            // Luego, hacer un UPDATE con el resultado de la suma de la puntuación total del equipo en la tabla equipos
+        $instanciaSesion = new GestorSesion();
+        $vista = new Vista();
+        $enrutador = new Enrutador();
+
+        $rutaApp = $enrutador->getRutaServidor();
+
+        if ($instanciaSesion->comprobarSesion() && $_SESSION["usuario"] === "admin") {
+
+            $instanciaAdminModelo = new AdminModelo();
+            // Obtener los datos de los equipos de la BBDD
+            $equipos = $instanciaAdminModelo->obtenerEquipos();
+            // Obtener los datos de configuración de la BBDD
+            $configuracion = $instanciaAdminModelo->obtenerConfiguracion();
+            // Obtener los datos de los jugadores de la BBDD
+            $jugadores = $instanciaAdminModelo->obtenerJugadores();
+
+            // Obtener los datos del formulario de actualización del equipo
+            if (isset($_POST["idEquipo"]) && isset($_POST["nombreEquipo"]) && isset($_POST["puntuacionTotal"]) && isset($_POST["presupuestoEquipo"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
+
+                // Validar los datos del formulario
+                $idEquipo = intval(trim($_POST["idEquipo"]));
+                $nombreEquipo = trim(string: preg_replace('/\s+/', ' ', ucwords(strtolower($_POST["nombreEquipo"]))));
+                $puntuacionTotal = intval(trim($_POST["puntuacionTotal"]));
+                $presupuestoEquipo = intval(trim($_POST["presupuestoEquipo"]));
+
+                if (!empty($nombreEquipo) && $puntuacionTotal >= 0 && $presupuestoEquipo >= 0) {
+
+                    // Actualizar los datos del equipo en la BBDD
+                    $resultadoActualizacion = $instanciaAdminModelo->actualizarEquipo($idEquipo, $nombreEquipo, $puntuacionTotal, $presupuestoEquipo);
+                    // Obtener los datos actualizados de los equipos de la BBDD
+                    $equipos = $instanciaAdminModelo->obtenerEquipos();
+
+                    if ($resultadoActualizacion === true && is_array($equipos) && $equipos) {
+
+                        // Si se ha actualizado correctamente el equipo, renderizar la vista de admin con los datos actualizados
+                        $data["equipos"] = $equipos;
+                        $data["jugadores"] = $jugadores;
+                        $data["configuracion"] = $configuracion;
+                        $vista->renderizarVista("admin", $data);
+
+                    } else if ($resultadoActualizacion === false) {
+
+                        // Si no se ha podido actualizar el equipo, mostrar un mensaje de error
+                        $data["equipos"] = $equipos;
+                        $data["jugadores"] = $jugadores;
+                        $data["configuracion"] = $configuracion;
+                        $data["errorEquipos"] = "Error al actualizar el equipo. No se realizaron cambios porque los datos introducidos son iguales a los ya existentes";
+                        $vista->renderizarVista("admin", $data);
+
+                    } else {
+
+                        // Si se ha producido un error al actualizar el equipo, mostrar un mensaje de error
+                        $data["equipos"] = $equipos;
+                        $data["jugadores"] = $jugadores;
+                        $data["configuracion"] = $configuracion;
+                        $data["errorEquipos"] = "Error al actualizar el equipo: " . htmlspecialchars($resultadoActualizacion);
+                        $vista->renderizarVista("admin", $data);
+
+                    }
+                
+                } else {
+
+                    // Si el nombre del equipo está vacío o la puntuación total o el presupuesto son menores a 0, mostrar un mensaje de error
+                    $data["equipos"] = $equipos;
+                    $data["jugadores"] = $jugadores;
+                    $data["configuracion"] = $configuracion;
+                    $data["errorEquipos"] = "Por favor, introduce un nombre de equipo válido y una puntuación total y presupuesto mayores o iguales a 0";
+                    $vista->renderizarVista("admin", $data);
+
+                }
+
+            } else {
+
+                // Si no se han enviado los campos necesarios, mostrar un mensaje de error
+                $data["equipos"] = $equipos;
+                $data["jugadores"] = $jugadores;
+                $data["configuracion"] = $configuracion;
+                $data["errorEquipos"] = "Por favor, completa correctamente todos los campos del formulario";
+                $vista->renderizarVista("admin", $data);
+
+            }
+
+        } else {
+
+            header("Location: " . $rutaApp . "inicio/accederInicio");
+            exit();
+
+        }
+
+    }
+
+    public function actualizarJugador() {
+
+        $instanciaSesion = new GestorSesion();
+        $vista = new Vista();
+        $enrutador = new Enrutador();
+
+        $rutaApp = $enrutador->getRutaServidor();
+
+        if ($instanciaSesion->comprobarSesion() && $_SESSION["usuario"] === "admin") {
+
+            $instanciaAdminModelo = new AdminModelo();
+            // Obtener los datos de los equipos de la BBDD
+            $equipos = $instanciaAdminModelo->obtenerEquipos();
+            // Obtener los datos de configuración de la BBDD
+            $configuracion = $instanciaAdminModelo->obtenerConfiguracion();
+            // Obtener los datos de los jugadores de la BBDD
+            $jugadores = $instanciaAdminModelo->obtenerJugadores();
+
+            // Obtener los datos del formulario de actualización del jugador
+            if (isset($_POST["idJugador"]) && isset($_POST["nombreJugador"]) && isset($_POST["puntuacionJugador"]) && isset($_POST["precioJugador"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
+
+                // Validar los datos del formulario
+                $idJugador = intval(trim($_POST["idJugador"]));
+                $nombreJugador = trim(string: preg_replace('/\s+/', ' ', ucwords(strtolower($_POST["nombreJugador"]))));
+                $puntuacionJugador = intval(trim($_POST["puntuacionJugador"]));
+                $precioJugador = intval(trim($_POST["precioJugador"]));
+
+                if (!empty($nombreJugador) && $puntuacionJugador >= 0 && $precioJugador >= 0) {
+
+                    $diferenciaPuntuacion = 0;
+
+                    // Calcular la diferencia entre la puntuación anterior del jugador y la nueva puntuación
+                    foreach($jugadores as $jugador) {
+                        
+                        if ($jugador["id_jugador"] === $idJugador) {
+                            
+                            // Restar puntuación nueva introducida y la puntuación anterior del jugador
+                            $diferenciaPuntuacion = $puntuacionJugador - $jugador["puntuacion_jugador"];
+                            break;
+
+                        }
+
+                    }
+
+                    // Actualizar los datos del equipo en la BBDD
+                    $resultadoActualizacion = $instanciaAdminModelo->actualizarJugador($idJugador, $nombreJugador, $puntuacionJugador, $diferenciaPuntuacion, $precioJugador);
+                    // Obtener los datos actualizados de los equipos de la BBDD
+                    $equipos = $instanciaAdminModelo->obtenerEquipos();
+                    // Obtener los datos actualizados de los equipos de la BBDD
+                    $jugadores = $instanciaAdminModelo->obtenerJugadores();
+
+                    if (is_array($resultadoActualizacion) && $resultadoActualizacion["exito"] === true) {
+
+                        // Si se ha actualizado correctamente el equipo, renderizar la vista de admin con los datos actualizados
+                        $data["equipos"] = $equipos;
+                        $data["jugadores"] = $jugadores;
+                        $data["configuracion"] = $configuracion;
+                        $data["mensajeJugador"] = $resultadoActualizacion["mensajeJugador"];
+                        $vista->renderizarVista("admin", $data);
+
+                    } else if ($resultadoActualizacion["exito"] === false) {
+
+                        // Si no se ha podido actualizar el equipo, mostrar un mensaje de error
+                        $data["equipos"] = $equipos;
+                        $data["jugadores"] = $jugadores;
+                        $data["configuracion"] = $configuracion;
+                        $data["errorJugador"] = "Error al actualizar el jugador. No se realizaron cambios porque los datos introducidos son iguales a los ya existentes";
+                        $vista->renderizarVista("admin", $data);
+
+                    } else {
+
+                        // Si se ha producido un error al actualizar el equipo, mostrar un mensaje de error
+                        $data["equipos"] = $equipos;
+                        $data["jugadores"] = $jugadores;
+                        $data["configuracion"] = $configuracion;
+                        $data["errorJugador"] = "Error al actualizar el equipo: " . htmlspecialchars($resultadoActualizacion);
+                        $vista->renderizarVista("admin", $data);
+
+                    }
+                
+                } else {
+
+                    // Si el nombre del equipo está vacío o la puntuación total o el presupuesto son menores a 0, mostrar un mensaje de error
+                    $data["equipos"] = $equipos;
+                    $data["jugadores"] = $jugadores;
+                    $data["configuracion"] = $configuracion;
+                    $data["errorJugador"] = "Por favor, introduce un nombre de jugador válido y una puntuación y precio mayores o iguales a 0";
+                    $vista->renderizarVista("admin", $data);
+
+                }
+
+            } else {
+
+                // Si no se han enviado los campos necesarios, mostrar un mensaje de error
+                $data["equipos"] = $equipos;
+                $data["jugadores"] = $jugadores;
+                $data["configuracion"] = $configuracion;
+                $data["errorJugador"] = "Por favor, completa correctamente todos los campos del formulario";
+                $vista->renderizarVista("admin", $data);
+
+            }
+
+        } else {
+
+            header("Location: " . $rutaApp . "inicio/accederInicio");
+            exit();
+
+        }
+
+    }
+
+    public function eliminarJugador() {
+
+        $instanciaSesion = new GestorSesion();
+        $vista = new Vista();
+        $enrutador = new Enrutador();
+
+        $rutaApp = $enrutador->getRutaServidor();
+
+        if ($instanciaSesion->comprobarSesion() && $_SESSION["usuario"] === "admin") {
+
+            $instanciaAdminModelo = new AdminModelo();
+            // Obtener los datos de los equipos de la BBDD
+            $equipos = $instanciaAdminModelo->obtenerEquipos();
+            // Obtener los datos de configuración de la BBDD
+            $configuracion = $instanciaAdminModelo->obtenerConfiguracion();
+            // Obtener los datos de los jugadores de la BBDD
+            $jugadores = $instanciaAdminModelo->obtenerJugadores();
+
+            // Obtener los datos del formulario de actualización del jugador
+            if (isset($_POST["idJugador"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
+
+                // Validar los datos del formulario
+                $idJugador = intval(trim($_POST["idJugador"]));
+
+                // Actualizar los datos del equipo en la BBDD
+                $resultadoEliminacion = $instanciaAdminModelo->eliminarJugador($idJugador);
+                // Obtener los datos actualizados de los equipos de la BBDD
+                $jugadores = $instanciaAdminModelo->obtenerJugadores();
+
+                    if (is_bool($resultadoEliminacion)) {
+
+                        // Si se ha eliminado correctamente el jugador, renderizar la vista de admin con los datos actualizados
+                        $data["equipos"] = $equipos;
+                        $data["jugadores"] = $jugadores;
+                        $data["configuracion"] = $configuracion;
+                        $data["mensajeJugador"] = "El jugador se ha eliminado correctamente";
+                        $vista->renderizarVista("admin", $data);
+
+                    } else {
+
+                        // Si se ha producido un error al eliminar el jugador, mostrar un mensaje de error
+                        $data["equipos"] = $equipos;
+                        $data["jugadores"] = $jugadores;
+                        $data["configuracion"] = $configuracion;
+                        $data["errorJugador"] = "Error al eliminar el jugador: " . htmlspecialchars($resultadoEliminacion);
+                        $vista->renderizarVista("admin", $data);
+
+                    }
+
+            } else {
+
+                // Si no se han enviado los campos necesarios, mostrar un mensaje de error
+                $data["equipos"] = $equipos;
+                $data["jugadores"] = $jugadores;
+                $data["configuracion"] = $configuracion;
+                $data["errorJugador"] = "Por favor, completa correctamente todos los campos del formulario";
+                $vista->renderizarVista("admin", $data);
+
+            }
+
+        } else {
+
+            header("Location: " . $rutaApp . "inicio/accederInicio");
+            exit();
+
+        }
 
     }
 
