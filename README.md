@@ -4,7 +4,7 @@
 
 Padel Fantasy 🎾 es una aplicación web desarrollada como proyecto de fin de grado, cuyo propósito es ofrecer una experiencia tipo fantasy league centrada en el mundo del pádel. Los usuarios pueden crear su equipo, seguir noticias y novedades del deporte, y competir en una clasificación general. Este proyecto busca combinar la pasión por el pádel con la gamificación, promoviendo la participación y el seguimiento activo de los torneos y jugadores.
 
-[Inicio Padel Fantasy](assets/img/inicio_app.jpg)
+![Inicio Padel Fantasy](assets/img/inicio_app.jpg)
 
 ---
 
