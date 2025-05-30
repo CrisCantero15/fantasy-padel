@@ -2,7 +2,7 @@
 
 <!-- Descripción general del proyecto y su propósito principal -->
 
-Padel Fantasy es una aplicación web desarrollada como proyecto de fin de grado, cuyo propósito es ofrecer una experiencia tipo fantasy league centrada en el mundo del pádel. Los usuarios pueden crear su equipo, seguir noticias y novedades del deporte, y competir en una clasificación general. Este proyecto busca combinar la pasión por el pádel con la gamificación, promoviendo la participación y el seguimiento activo de los torneos y jugadores.
+Padel Fantasy 🎾 es una aplicación web desarrollada como proyecto de fin de grado, cuyo propósito es ofrecer una experiencia tipo fantasy league centrada en el mundo del pádel. Los usuarios pueden crear su equipo, seguir noticias y novedades del deporte, y competir en una clasificación general. Este proyecto busca combinar la pasión por el pádel con la gamificación, promoviendo la participación y el seguimiento activo de los torneos y jugadores.
 
 ---
 
@@ -30,11 +30,8 @@ git clone https://github.com/CrisCantero15/fantasy-padel.git
 ```
 
 2. Instala y configura un entorno local con XAMPP (o similar) que incluya Apache y MySQL.
-
 3. Inicia Apache y MySQL desde el panel de control de XAMPP.
-
 4. Crea una base de datos en MySQL para la aplicación (preferiblemente, usa el nombre 'fantasy').
-
 5. La estructura de la base de datos debe ser la siguiente:
 
 <details>
@@ -94,7 +91,7 @@ CREATE TABLE equipos_jugadores (
 ```
 </details>
 
-6. Abre el archivo config/Configuracion.php y edita las variables de configuración para conectar la aplicación con la base de datos local:
+6. Abre el archivo config/Configuracion.php y edita las variables de configuración para conectar la aplicación con la base de datos local.
 
 ---
 
