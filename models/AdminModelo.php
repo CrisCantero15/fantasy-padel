@@ -271,7 +271,10 @@ class AdminModelo {
             if (!empty($resultadoValidacion)) {
                 
                 // Se obtiene un array con valores
-                return "El nombre del jugador ya existe en la base de datos. Por favor, elige otro";
+                return [
+                    'exito' => false,
+                    'mensajeJugador' => "El nombre del jugador ya existe en la base de datos. Por favor, elige otro"
+                ];
 
             }
 

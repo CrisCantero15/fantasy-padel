@@ -210,7 +210,7 @@ Class AdminControlador {
                         $data["equipos"] = $equipos;
                         $data["jugadores"] = $jugadores;
                         $data["configuracion"] = $configuracion;
-                        $data["errorJugador"] = "Error al actualizar el jugador. No se realizaron cambios porque los datos introducidos son iguales a los ya existentes";
+                        $data["errorJugador"] = $resultadoActualizacion["mensajeJugador"];
                         $vista->renderizarVista("admin", $data);
 
                     } else {
