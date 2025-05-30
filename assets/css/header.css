@@ -32,10 +32,13 @@ header ul {
 }
 
 .header-list {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     text-shadow: 0 2px 5px black;
     transition: transform 0.3s ease, color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header-list a {
@@ -46,6 +49,8 @@ header ul {
     color: #F5F5DC;
     cursor: pointer;
     transition: transform 0.3s ease, color 0.3s ease;
+    font-size: inherit;
+    line-height: 1.2;
 }
 
 .header-list a:hover {
@@ -65,10 +70,17 @@ header ul {
 
 .header-list a p {
     margin-top: 5px;
+    font-size: 0.9rem;
+    line-height: 1;
+    text-align: center;
 }
 
 .header-list img {
     border-radius: 50%;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
 }
 
 /* BOTÓN */
@@ -112,6 +124,14 @@ header button:hover {
     header button {
         font-size: 1rem;
     }
+
+    .header-list {
+        font-size: 1rem;
+    }
+
+    .header-list a p {
+        font-size: 0.85rem;
+    }
 }
 
 /* Móviles */
@@ -125,7 +145,16 @@ header button:hover {
     }
 
     .header-list {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+    }
+
+    .header-list a p {
+        font-size: 0.8rem;
+    }
+
+    .header-list img {
+        width: 36px;
+        height: 36px;
     }
 
     header button {
@@ -134,7 +163,7 @@ header button:hover {
     }
 
     header ul {
-        /* flex-direction: column; */
         gap: 0.7rem;
     }
 }
+

@@ -23,7 +23,7 @@
             <div class="modal">
                 <div>
                     <h1>¿Aún no tienes un equipo registrado?</h1>
-                    <p>¡No te preocupes! Puedes registrarlo ahora mismo. Para ello, introduce el nombre de tu equipo y pulsa en el botón "Añadir equipo".</p>
+                    <p>¡No te preocupes! Puedes registrarlo ahora mismo. Para ello, introduce a continuación el nombre de tu equipo</p>
                     <form action="<?php echo $rutaApp ?>inicio/registrarEquipo" method="POST">
                         <input type="text" id="nombreEquipo" name="nombreEquipo" placeholder="Nombre del equipo" required>
                         <?php
@@ -32,7 +32,7 @@
                                 <p><?php echo $data["errorValidacion"] ?></p>
                             </div>
                         <?php } ?>
-                        <button class="btn-modal" type="submit">Añadir equipo</button>
+                        <button type="submit">CREAR EQUIPO</button>
                     </form>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                 <div>
                     <h1>¡Equipo registrado!</h1>
                     <p><?php echo $data["exitoRegistro"] ?></p>
-                    <button class="btn-modal" onclick="window.location.href='<?php echo $rutaApp ?>mercado/accederMercado'">Ir al mercado</button>
+                    <button class="btn-modal" onclick="window.location.href='<?php echo $rutaApp ?>mercado/accederMercado'">IR AL MERCADO</button>
                 </div>
             </div>
         <?php } ?>

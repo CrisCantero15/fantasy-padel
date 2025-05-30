@@ -51,7 +51,7 @@
                                 <form action="<?php echo $rutaApp ?>mercado/comprarJugador" method="POST">
                                     <input type="hidden" name="precioJugador" value="<?= $jugador["precio"] ?>">
                                     <input type="hidden" name="idJugador" value="<?= $jugador["id_jugador"] ?>">
-                                    <button type="submit" class="btnCompra">
+                                    <button type="submit" class="boton">
                                         <i class="fas fa-shopping-cart"></i>
                                     </button>
                                 </form>

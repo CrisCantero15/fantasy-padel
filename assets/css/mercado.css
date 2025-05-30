@@ -146,3 +146,87 @@ section > h3 {
     background-color: #b8c3d1;
     font-size: 1.25rem;
 }
+
+.boton {
+    background-color: #1A2C36;
+    color: #F5F5DC;
+    border-radius: 10px;
+    padding: 0.2rem 0.5rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    font-family: 'Playfair Display', sans-serif;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    line-height: 1;
+}
+
+.boton:hover {
+    background-color: #2d4b5a;
+    transform: scale(1.05);
+}
+
+/* Responsive Design - Clasificación y Mercado */
+
+@media (max-width: 1024px) {
+    .tablaMercado {
+        width: 80%;
+    }
+
+    .tablaMercado th,
+    .tablaMercado td {
+        font-size: 1rem;
+        padding: 8px;
+    }
+
+    section > h1 {
+        font-size: 1.75rem;
+        margin-bottom: 50px;
+    }
+
+    section > h3 {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+
+    .btnModal {
+        width: 50vw;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    #modal > div {
+        width: 80%;
+        padding: 20px 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .tablaMercado {
+        width: 80%;
+        font-size: 0.85rem;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .tablaMercado th,
+    .tablaMercado td {
+        font-size: 0.85rem;
+        padding: 6px;
+    }
+
+    section > h1 {
+        font-size: 1.5rem;
+    }
+
+    .btnModal {
+        width: 80vw;
+        font-size: 0.9rem;
+    }
+
+    #modal > div {
+        width: 90%;
+        padding: 15px 8px;
+    }
+}

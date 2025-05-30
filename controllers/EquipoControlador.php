@@ -389,10 +389,25 @@ class EquipoControlador {
 
         // Validación: NO se puede vender un jugador que es titular si configuracion->'modif_titulares' es false
         $configuracion = $instanciaEquipoModelo->obtenerConfiguracion();
+        $esTitular = false;
+        
+        foreach ($jugadores as $jugador) {
+
+            if ($jugador["id_jugador"] === $idJugador) {
+
+                if ($jugador["en_titular"]) {
+
+                    $esTitular = true;
+
+                }
+
+            }
+
+        }
 
         if (is_array($configuracion) && $configuracion) {
 
-            if (!$configuracion[0]["modif_titulares"]) {
+            if (!$configuracion[0]["modif_titulares"] && $esTitular) {
 
                 $data["jugadoresEquipo"] = $jugadores;
                 $data["errorTitular"] = "La jornada está en curso, por lo que no puedes vender los jugadores titulares";

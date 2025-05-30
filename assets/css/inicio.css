@@ -57,6 +57,42 @@ main {
     gap: 20px;
 }
 
+form {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form input, form button {
+    padding: 1.5rem 1rem;
+    border: 1px solid #dadada;
+    border-radius: 10px;
+    font-family: Arial;
+}
+
+form input:focus {
+    outline: none;
+    border: 1px solid #3D6CA1;
+}
+
+form button {
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);
+    color: white;
+    font-weight: bold;
+}
+
+form button:hover {
+    background: #1e5f8a;
+    cursor: pointer;
+}
+
+form button:active {
+    background: #1a4c6e;
+}
+
 .btn-modal {
     margin: 0 auto;
     margin-bottom: 10px;
@@ -184,7 +220,7 @@ section > h1 {
 }
 
 .imgNovedad > img {
-    width: 100%;
+    /* width: 100%; */
     object-fit: cover;
     border-radius: 10px;
     margin: 10px 0px;

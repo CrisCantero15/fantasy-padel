@@ -1,14 +1,11 @@
-/* HACER RESPONSIVE */
-/* AÑADIR EFECTOS Y HOVER */
-
 footer {
     background: linear-gradient(to bottom, #94BAE7, #3D6CA1 100%);
     display: flex;
-    min-height: 16vh;
-    /* min-width: 100vw; */
-    padding: 0 12.5vw;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    min-height: 16vh;
+    padding: 0 12.5vw;
     box-shadow: 0 -2px 10px black;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -17,7 +14,6 @@ footer {
 .footer-social {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -37,6 +33,9 @@ footer {
 }
 
 .footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-size: 1.2rem;
     font-weight: 1000;
     text-shadow: 0 2px 5px black;
@@ -46,15 +45,46 @@ footer {
     padding-top: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-content: center;
     align-items: center;
     color: #F5F5DC;
     text-decoration: none;
     cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.footer-contact a i, #media i {
+/* Transiciones generales */
+.footer-contact a,
+.footer-contact a i,
+#media a,
+#media a i {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* HOVER en .footer-contact a (incluye icono) */
+.footer-contact a:hover {
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.footer-contact a:hover i {
+    color: #fff;
+    transform: scale(1.2);
+}
+
+/* HOVER en enlaces dentro de #media */
+#media a:hover {
+    color: #fff;
+    transform: scale(1.05);
+}
+
+#media a:hover i {
+    color: #fff;
+    transform: scale(1.2);
+}
+
+/* Estilos base para iconos */
+.footer-contact a i,
+#media a i {
     font-size: 1.9rem;
     color: #F5F5DC;
 }
@@ -62,3 +92,20 @@ footer {
 .footer-contact a p {
     margin-top: 5px;
 }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column-reverse;
+        gap: 20px;
+        padding: 20px 5vw;
+        min-height: auto;
+    }
+
+    .footer-social,
+    .footer-contact {
+        width: 100%;
+        align-items: center;
+    }
+}
+

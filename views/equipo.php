@@ -55,17 +55,18 @@
                         <?php foreach ($data["jugadoresEquipo"] as $jugador): ?>
                     <h3 class="<?= $jugador['en_titular'] ? 'jugadorTitular' : '' ?>">
                         <?=
-                            htmlspecialchars($jugador["nombre_jugador"]) . " - " .
+                            htmlspecialchars($jugador["nombre_jugador"]) . " | " .
                             htmlspecialchars($jugador["puntuacion_jugador"]) . " | " .
                             number_format(htmlspecialchars($jugador["precio"])) . "€ | "
                         ?>
                         <?php if ($jugador["en_titular"] == true): ?>
-                             <button class="boton" onclick="window.location.href='<?= $rutaApp ?>equipo/quitarJugador?id=<?= $jugador['id_jugador'] ?>'">Banquillazo</button>
+                             <button class="boton" onclick="window.location.href='<?= $rutaApp ?>equipo/quitarJugador?id=<?= $jugador['id_jugador'] ?>'"><i class="fas fa-user-slash"></i></button>
                         <?php else: ?>
-                            <button class="boton" onclick="window.location.href='<?= $rutaApp ?>equipo/seleccionarJugador?id=<?= $jugador['id_jugador'] ?>'">Titular</button>
+                            <button class="boton" onclick="window.location.href='<?= $rutaApp ?>equipo/seleccionarJugador?id=<?= $jugador['id_jugador'] ?>'"><i class="fas fa-star"></i></button>
                         <?php endif; ?>
-                        <button class="boton" onclick="window.location.href='<?= $rutaApp ?>equipo/venderJugador?id=<?= $jugador['id_jugador'] ?>'">Vender</button>
+                        <button class="boton" onclick="window.location.href='<?= $rutaApp ?>equipo/venderJugador?id=<?= $jugador['id_jugador'] ?>'"><i class="fas fa-shopping-cart"></i> Vender</button>
                     </h3>
+                    <hr>
                     <?php 
                         endforeach;
                     else:
